@@ -21,9 +21,29 @@ label start:
         zoom 1.75
 
     # Display the introduction
-    "It's a bright morning at Stanford University"
+    "It was a bright morning at Stanford University when I saw this on my phone..."
 
     # Display the date choice
+
+    scene bg fizz:
+        zoom 1.38
+        truecenter
+
+    "Eventually, after not hearing from my roomate, I realized that these Fizz and FoHo posts are about Jim!"
+
+    scene bg dorm:
+        zoom 3.0
+    
+    "Jim was my freshman year roommate and we’ve lived together every year since. I can’t believe he’s gone, I warned him to not go on dates with weirdos on this campus."
+
+
+    scene bg hinge:
+        zoom 1.50
+        truecenter
+    
+    "There’s no way there was no evidence. The killer showed no remorse, their dating profile is probably still active. I have to find the murderer, guess it’s time to get on Tinge."
+
+
     
     menu:
         "Who are you swiping on?"
@@ -34,6 +54,23 @@ label start:
         "Frat bro":
             jump frat_bro_date
 
+label middle:
+
+    scene bg hinge:
+            zoom 1.50
+            truecenter
+    
+    "Repeat a date or click a new one!"
+
+    menu:
+        "Who are you swiping on?"
+        "Stanford start-up guy":
+            jump start_up_date
+        "Nerdy CS student":
+            jump CS_guy_date
+        "Frat bro":
+            jump frat_bro_date
+    
 
 # Define the date label
 label frat_bro_date:
@@ -60,7 +97,7 @@ label frat_bro_date:
 
     # Display the ending
     frat_bro "Thanks for a great date! Let's do it again sometime."
-    jump end
+    jump middle
 
 label CS_guy_date:
     scene bg coho: 
@@ -86,7 +123,7 @@ label CS_guy_date:
 
     # Display the ending
     cs_guy "Thanks for a great date! Let's do it again sometime."
-    jump end
+    jump middle
 
 label start_up_date:
     scene bg coupa: 
@@ -117,14 +154,14 @@ label start_up_date:
             "This sounds very suspicious…":
                 startup_guy "Yes I know about the recent murder…but this is completely unrelated to that, I swear."
             "How would this even work?":
-                startup "Simple. Users would input relevant details about their desired alibi—time, location, circumstances—and AlibiAI's advanced algorithms would generate a meticulously crafted narrative, backed by seemingly authentic evidence."
+                startup_guy "Simple. Users would input relevant details about their desired alibi—time, location, circumstances—and AlibiAI's advanced algorithms would generate a meticulously crafted narrative, backed by seemingly authentic evidence."
         
 
 
 
     # Display the ending
     startup_guy "Thanks for a great date! Let's do it again sometime."
-    jump end
+    jump middle
 
 # Define the ending label
 label end:
