@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 117: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "This sounds very suspicious…"
-                                  ^
+The label frat_bro_date is defined twice, at File "game/script.rpy", line 77:
+label frat_bro_date:
+and File "game/script.rpy", line 104:
+label frat_bro_date:
+
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Mon May 15 15:08:47 2023
+Wed May 24 23:07:11 2023
