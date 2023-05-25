@@ -83,53 +83,53 @@ label CS_guy_date:
             cs_guy "Oh, I really liked Jim even though he wasn’t a CS major. Clearly, he wasn’t able to understand anything about my projects and any of my passions. Still, it was a shame to hear about the Lake Lag incident."
             menu: 
                 "Where were you that night? Do you have any alibis or any evidence to back that up?":
-                    cs_guy "I actually don’t but I was hanging out with my friend Frat Guy before he said he had to go to Lake Lag for some Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa rush event."
+                    cs_guy "I actually don’t but I was hanging out with my friend Brett before he said he had to go to Lake Lag for some Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa rush event."
                     cs_guy "After that, I was working by myself on one of my project’s – AlibiAI – code. That’s when the Jim murder happened, but I didn’t really take pictures of me coding or being in the room"
                     menu: 
-                        "What rush event? Can you tell me more about Frat Guy and Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa?":
-                            cs_guy "Apparently the pledges were bringing potential dates to Lake Lag. That’s all I know. And Frat Guy is a good friend of mine that I hang out with when I need to let loose after grinding on CS work and AlibiAI. But things have been weird lately, ever since he also started seeing Jim at the same time as me."
+                        "What rush event? Can you tell me more about Brett and Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa?":
+                            cs_guy "Apparently the pledges were bringing potential dates to Lake Lag. That’s all I know. And Brett is a good friend of mine that I hang out with when I need to let loose after grinding on CS work and AlibiAI. But things have been weird lately, ever since he also started seeing Jim at the same time as me."
                             menu frat_guy_converge: 
-                                "Oh that’s too bad. You’re probably a way better guy than Frat Guy anyways, in my opinion, especially with what must be a cool project that you’re working on!":
+                                "Oh that’s too bad. You’re probably a way better guy than Brett anyways, in my opinion, especially with what must be a cool project that you’re working on!":
                                     cs_guy "Oh, you’re too kind! But also you’re not wrong. Let me tell you more about AlibiAI. AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."
-                                    cs_guy "Frat Guy was actually the one who really encouraged me to build it when I told him about it too. I can give you the access key to the beta demo if you want?"
+                                    cs_guy "Brett was actually the one who really encouraged me to build it when I told him about it too. I can give you the access key to the beta demo if you want?"
                                     show card:
                                         xalign 0.5 yalign 0.4
                                     cs_guy "Oh shoot wrong card."
                                     cs_guy "Sorry I've got to head out really quick. Just remembered I have section. Bye!"
                                     jump start
-                                "Can I get Frat Guy’s number?":
+                                "Can I get Brett’s number?":
                                     cs_guy "Really? After what I just said about things being weird because of a mutual love interest? No, I won’t give you his number. In fact, I’m gonna have to ask you to leave."
                                     "Sorry for the trouble!"
                                     jump start
                                 "Can you tell me more about AlibiAI?":
                                     cs_guy "That’s a personal project that I’ve been working on ever since Andrew Ng told me that it would be a cool idea to look into. AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."
-                                    cs_guy "I personally thought it was a bit weird when he first told me about the idea, but I talked to my friend Frat Guy about it, and he really strongly encouraged me to pursue it and implement it."
+                                    cs_guy "I personally thought it was a bit weird when he first told me about the idea, but I talked to my friend Brett about it, and he really strongly encouraged me to pursue it and implement it."
                                     menu more_alibi_ai: 
                                         "That sounds like a really cool project! It sounds like a very technically challenging engineering problem, so it’s so cool to see that you’re smart enough to tackle it.":
                                             cs_guy "Oh, you’re too kind! But also you’re not wrong. Let me tell you more about AlibiAI. AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."
-                                            cs_guy "Frat Guy was actually the one who really encouraged me to build it when I told him about it too. I can give you the access key to the beta demo if you want?"
+                                            cs_guy "Brett was actually the one who really encouraged me to build it when I told him about it too. I can give you the access key to the beta demo if you want?"
                                             show card:
                                                 xalign 0.5 yalign 0.4
                                             cs_guy "Oh shoot wrong card."
                                             cs_guy "Sorry I've got to head out really quick. Just remembered I have section. Bye!"
                                             jump start
-                                        "Why did Frat Guy encourage you so much to build AlibiAI?":
+                                        "Why did Brett encourage you so much to build AlibiAI?":
                                             cs_guy "Honestly, I’m not really sure why. But it did seem like it might be because he really wanted to use it for himself. But that’s all I’ll say. Anyways, I gotta get going. Gotta keep working on my project. See you later! "
                                             jump start
                 "What did you guys talk about? How did your date go with Jim?":
                     cs_guy "I tried explaining my projects to Jim, like for example my project AlibiAI, but he really didn’t understand what I was talking about. That’s when I knew that things between us weren’t going to work out."
-                    cs_guy "Also, he was clearly more into my friend Frat Guy and mentioned his name multiple times during our date. He even told me that they were supposed to meet up later somewhere. Since then, things between Frat Guy and I have been a little weird, but I guess that’s not that important."
+                    cs_guy "Also, he was clearly more into my friend Brett and mentioned his name multiple times during our date. He even told me that they were supposed to meet up later somewhere. Since then, things between Brett and I have been a little weird, but I guess that’s not that important."
                     jump frat_guy_converge
         "Yes, I’d love to chat about your projects and what kind of research you’re doing! It’s so cool to connect with someone who is interested in the same things as me!":
             cs_guy "Oh yeah I would love to tell you all about the amazing things that I’ve been working on. It’s really setting me up for success for my Stanford CS PhD applications. I’m currently working in 2 labs! I’m working in Andrew Ng’s lab – which is super prestigious to get into – and I’m working on a personal project called AlibiAI."
             menu: 
                 "Wow that's so cool! Can you tell me more about AlibiAI?":
                     cs_guy "That’s a personal project that I’ve been working on ever since Andrew Ng told me that it would be a cool idea to look into. AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."
-                    cs_guy "I personally thought it was a bit weird when he first told me about the idea, but I talked to my friend Frat Guy about it, and he really strongly encouraged me to pursue it and implement it."
+                    cs_guy "I personally thought it was a bit weird when he first told me about the idea, but I talked to my friend Brett about it, and he really strongly encouraged me to pursue it and implement it."
                     jump more_alibi_ai
                 "I’d love to hear more about what you do outside of work though!":
                     cs_guy "Hmm let’s see…outside of work, sometimes I really need to let loose and I go hang out with some of my friends in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa."
-                    cs_guy " I’m really close to Frat Guy actually who is in the frat, and he was the one who strongly encouraged me to pursue implementing the tech for AlibiAI, the project I mentioned earlier. But things got a bit weird between us when I heard he was also seeing Jim."
+                    cs_guy " I’m really close to Brett actually who is in the frat, and he was the one who strongly encouraged me to pursue implementing the tech for AlibiAI, the project I mentioned earlier. But things got a bit weird between us when I heard he was also seeing Jim."
                     jump frat_guy_converge
 
 label start_up_date:
