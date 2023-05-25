@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 117: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "This sounds very suspicious…"
-                                  ^
+File "game/script.rpy", line 158: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "Is this your own original idea?"
+                                     ^
+
+File "game/script.rpy", line 173: expected statement.
+    startup_girl: "Rock climbing! You know, I have a bit of a reputation in climbing circles. They call me the Spider. As much as I would love to though, I unfortunately won’t be able to. I’ve had my hands really full recently, so I really don’t have much free time these days. You know, other than for quick casual dates like this."
+                ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Mon May 15 15:08:47 2023
+Tue May 23 13:43:55 2023

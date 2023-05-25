@@ -6,13 +6,15 @@ default love = 0
 
 # Define the character to be dated
 
-define startup_guy = Character("SBF", color="#c8ffc8", image="startup_guy")
+define startup_girl = Character("SBF", color="#c8ffc8", image="startup_girl")
 define cs_guy = Character("Brian", color="#c8ffc8", image="cs_guy")
 define frat_bro = Character("Chad", color="#c8ffc8", image="frat_bro")
 
-image startup_guy = "startup_guy.png"
+image startup_girl = "startup_girl.png"
 image cs_guy = "cs_guy.png"
 image frat_bro = "frat_bro.png"
+
+image card = "card.jpeg"
 
 
 # Define the starting label
@@ -94,36 +96,102 @@ label start_up_date:
 
     # Increment the love level
     $ love += 1
-    show startup_guy:
+    show startup_girl:
         zoom 1.5
 
     # Display the date dialogue
     mc "Hey there! So, you're all about startups and entrepreneurship, huh? Changing the world one app at a time?"
-    startup_guy "Absolutely! I'm like the Elon Musk of dorm room innovations. The next big thing is just a pitch deck away!"
-    mc "You know I think my rommate went on a date with you. Jim? I wonder where you were the night of his murder."
-    startup_guy " Ah, the night of that incident. I was sad to hear about that. Well, here's the deal, I was actually rocking the startup scene at an ultra-exclusive conference. Top secret stuff! "
-    menu:
-        "Is there any way you can prove you were there? Any witnesses or photos?":
-            startup_guy "Oh, I wish! Unfortunately, this event was like a covert mission—invite-only, no social media allowed. It was so secretive, they had a password just to use the bathroom. What I can share though is what my new startup is currently working on, which is really exciting!"
-        "What was the conference for?": 
-            startup_guy "Oh, I wish I could tell you! Unfortunately, this event was like a covert mission—invite-only, no social media allowed. It was so secretive, they had a password just to use the bathroom. What I can share though is what my new startup is currently working on, which is really exciting!"         
-        "What kind of startup are you working on that you brought to the table there?":
-            jump next_big_thing
+    startup_girl "Absolutely! I'm like the Elon Musk of dorm room innovations. The next big thing is just a pitch deck away!"
+    menu: 
+        "Let’s get down to business. I know I called you here for a date, but I’m here to investigate the details of the murder of my roommate Jim, who I know you were seeing. Where were you on the night when Jim was murdered at Lake Lag?":
+            label down_to_business:
+                startup_girl " Ah, the night of that incident. I was sad to hear about that. Well, here's the deal, I was actually rocking the startup scene at an ultra-exclusive conference. Top secret stuff! "
+                menu:
+                    "Is there any way you can prove you were there? Any witnesses or photos?":
+                        startup_girl "Oh, I wish! Unfortunately, this event was like a covert mission—invite-only, no social media allowed. It was so secretive, they had a password just to use the bathroom. What I can share though is what my new startup is currently working on, which is really exciting!"
+                        menu: 
+                            "Sigh…okay, what’s your startup idea?":
+                                jump next_big_thing
+                            "No, I don’t really care. What I really want to know is proof that you really were at this “conference” on that night.":
+                                startup_girl " I swear, it’ll only take a second to pitch it to you! Okay, picture this —"
+                                jump next_big_thing
+                    "What was the conference for?": 
+                        startup_girl "Oh, I wish I could tell you! Unfortunately, this event was like a covert mission—invite-only, no social media allowed. It was so secretive, they had a password just to use the bathroom. What I can share though is what my new startup is currently working on, which is really exciting!"         
+                        menu: 
+                            "Sigh…okay, what’s your startup idea?":
+                                jump next_big_thing
+                            "No, I don’t really care. What I really want to know is proof that you really were at this “conference” on that night.":
+                                startup_girl " I swear, it’ll only take a second to pitch it to you! Okay, picture this —"
+                                jump next_big_thing
+                    "What kind of startup are you working on that you brought to the table there?":
+                        jump next_big_thing
 
-    label next_big_thing:
-        mc "So what’s your next big thing?"
-        menu :
-            "Picture this – 'AlibiAI' – the ultimate solution for concealing unsavory activities. It's a revolutionary app that helps you create foolproof alibis, no questions asked. AlibiAI is all about empowering individuals to control their narratives. It's not just for criminals, but for anyone who wants to maintain privacy, protect their reputation, or maybe even hide a harmless secret or two."
-            "This sounds very suspicious…":
-                startup_guy "Yes I know about the recent murder…but this is completely unrelated to that, I swear."
-            "How would this even work?":
-                startup "Simple. Users would input relevant details about their desired alibi—time, location, circumstances—and AlibiAI's advanced algorithms would generate a meticulously crafted narrative, backed by seemingly authentic evidence."
+        "So what’s your next big thing?":
+            label next_big_thing:
+                startup_girl "'AlibiAI' – the ultimate solution for concealing unsavory activities. It's a revolutionary app that helps you create foolproof alibis, no questions asked."
+                startup_girl "AlibiAI is all about empowering individuals to control their narratives. It's not just for criminals, but for anyone who wants to maintain privacy, protect their reputation, or maybe even hide a harmless secret or two."
+
+                menu :
+                    "This sounds very suspicious…":
+                        startup_girl "Yes I know about the recent murder…but this is completely unrelated to that, I swear. I’m only working on this because my colleague <CS nerdy guy> suggested the idea to me and wanted my help on the business side of things."
+                        "{i}You remember that 'CS nerdy guy' was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                        menu: 
+                            "CS nerdy guy? Can you tell me more about him?":
+                                startup_girl "I honestly don't really know anything about the guy. I swear. Anyways, something has come up unexpectedly so it looks like I'll have to leave. This was fun! Maybe we'll 'grab a meal' sometime. See ya!"
+                                jump start
+                            "CS nerdy guy? Are you aware that he was seeing Jim, the person who was murdered at Lake Lag recently?":
+                                startup_girl "I honestly don't really know anything about the guy. I swear. Anyways, something has come up unexpectedly so it looks like I'll have to leave. This was fun! Maybe we'll 'grab a meal' sometime. See ya!"
+                                jump start
+
+                    "How would this even work?":
+                        startup_girl "Simple. Users would input relevant details about their desired alibi—time, location, circumstances—and AlibiAI's advanced algorithms would generate a meticulously crafted narrative, backed by seemingly authentic evidence."
+                        startup_girl "We'd offer different package tiers, from basic cover-ups to deluxe setups that include tailored social media posts and forged documents. Unsure how the technology works - I’m on the business side of things, but you can email my colleague <CS nerdy guy> who came to me with the idea and wanted my help on the business side of things while he codes it."
+                        "{i}You remember that 'CS nerdy guy' was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                        menu: 
+                            "CS nerdy guy? Can you tell me more about him?":
+                                startup_girl "I honestly don't really know anything about the guy. I swear."
+                                startup_girl "Anyways, something has come up unexpectedly so it looks like I'll have to leave. This was fun! Maybe we'll 'grab a meal' sometime. See ya!"                                
+                                jump start
+                            "CS nerdy guy? Are you aware that he was seeing Jim, the person who was murdered at Lake Lag recently?":
+                                startup_girl "I honestly don't really know anything about the guy. I swear."
+                                startup_girl "Anyways, something has come up unexpectedly so it looks like I'll have to leave. This was fun! Maybe we'll 'grab a meal' sometime. See ya!"                               
+                                jump start
+                            "This sounds like a really cool idea! It’s honestly so impressive how you’re spearheading the business side of things!":
+                                show card:
+                                    xalign 0.5 yalign 0.4
+                                startup_girl "Thanks so much! It’s cool to see that it seems like an exciting project to you too! Here, I gotta get going, but let me give you my business card so we can chat more later. Would love to grab a meal sometime!"
+                                jump start
+
+                    "Is this your own original idea?":
+                        startup_girl "I mean…depends on how you define “original”. It is my idea now too, since I’m working on the business side of things as the COO, but I will admit that my colleague <CS nerdy guy> did suggest the idea to me originally because he wanted my help."
+                        "{i}You remember that 'CS nerdy guy' was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                        menu: 
+                            "CS nerdy guy? Can you tell me more about him?":
+                                startup_girl "I honestly don't really know anything about the guy. I swear."
+                                startup_girl "Anyways, something has come up unexpectedly so it looks like I'll have to leave. This was fun! Maybe we'll 'grab a meal' sometime. See ya!"                                
+                                jump start
+                            "CS nerdy guy? Are you aware that he was seeing Jim, the person who was murdered at Lake Lag recently?":
+                                startup_girl "I honestly don't really know anything about the guy. I swear."
+                                startup_girl "Anyways, something has come up unexpectedly so it looks like I'll have to leave. This was fun! Maybe we'll 'grab a meal' sometime. See ya!"
+                                jump start
+                            "This sounds like a really cool idea! It’s honestly so impressive how you’re spearheading the business side of things!":
+                                show card:
+                                    xalign 0.5 yalign 0.4
+                                startup_girl "Thanks so much! It’s cool to see that it seems like an exciting project to you too! Here, I gotta get going, but let me give you my business card so we can chat more later. Would love to grab a meal sometime!"
+                                jump start
+        "Wow, you look like you’d be really good at rock climbing. Want to go with me some time?":
+            startup_girl "Rock climbing! You know, I have a bit of a reputation in climbing circles. They call me the Spider. As much as I would love to though, I unfortunately won’t be able to. I’ve had my hands really full recently, so I really don’t have much free time these days. You know, other than for quick casual dates like this."
+            menu:
+                "What’s got you so busy?":
+                    jump next_big_thing
+                "I was making fun of you. I don’t even like rock climbing. What I really want to know is that you were doing on the night that my roommate Jim was murdered!":
+                    jump down_to_business
         
 
 
 
     # Display the ending
-    startup_guy "Thanks for a great date! Let's do it again sometime."
+    startup_girl "Thanks for a great date! Let's do it again sometime."
     jump end
 
 # Define the ending label
