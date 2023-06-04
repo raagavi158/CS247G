@@ -10,9 +10,9 @@ define startup_girl = Character("SBF", color="#c8ffc8", image="startup_girl")
 define cs_guy = Character("Brian", color="#c8ffc8", image="cs_guy")
 define frat_bro = Character("Chad", color="#c8ffc8", image="frat_bro")
 
-image startup_girl = "startup_girl.png"
-image cs_guy = "cs_guy.png"
-image frat_bro = "frat_bro.png"
+image startup_girl = "startup_girl.svg"
+image cs_guy = "cs_guy.svg"
+image frat_bro = "frat_bro.svg"
 
 image card = "card.jpeg"
 
@@ -66,7 +66,7 @@ label frat_bro_date:
 
 label CS_guy_date:
     scene bg coho: 
-        zoom 0.75
+        zoom 2.75
 
     # Increment the love level
     $ love += 1
