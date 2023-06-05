@@ -1,4 +1,4 @@
-Sun Jun  4 22:54:07 2023
+Mon Jun  5 11:46:29 2023
 macOS-10.13.6-x86_64-i386-64bit
 Ren'Py 8.1.0.23051307
  
@@ -6,33 +6,33 @@ Ren'Py 8.1.0.23051307
 Bootstrap to the start of init.init. took 0.06s
 Early init. took 0.00s
 Loader init. took 0.01s
-Loading error handling. took 0.19s
-Loading script. took 0.22s
-Loading save slot metadata. took 0.05s
+Loading error handling. took 0.04s
+Loading script. took 0.24s
+Loading save slot metadata. took 0.06s
 Loading persistent. took 0.00s
-Running init code. took 0.08s
-Loading analysis data. took 0.04s
+Running init code. took 0.07s
+Loading analysis data. took 0.03s
 Analyze and compile ATL. took 0.01s
 Reloading save slot metadata. took 0.03s
 Index archives took 0.00s
-Dump and make backups. took 0.13s
+Dump and make backups. took 0.09s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
 Initial gc. took 0.03s
 DPI scale factor: 1.000000
 Creating interface object. took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.05s
+Init translation took 0.06s
 Build styles took 0.00s
-Load screen analysis took 0.05s
+Load screen analysis took 0.14s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.38s
+Prepare screens took 0.17s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
-Interface start. took 0.22s
+Interface start. took 0.29s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1280, 800)
@@ -42,7 +42,120 @@ Vendor: "b'Intel Inc.'"
 Renderer: b'Intel(R) Iris(TM) Graphics 6100'
 Version: b'2.1 INTEL-10.36.32'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1280, 708) drawable=(2560, 1416)
+Screen sizes: virtual=(1920, 1080) physical=(1280, 707) drawable=(2560, 1414)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 236, in script
+    mc "Hey Brian! It’s great to meet you, excited to hang out with you!"
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 898, in execute
+    statement_name(stmt_name)
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 47, in statement_name
+    i(name)
+  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
+    _window_show(auto=True)
+  File "renpy/common/000window.rpy", line 69, in _window_show
+    renpy.with_statement(trans)
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/exports.py", line 1757, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 2895, in do_with
+    return self.interact(trans_pause=True,
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 3499, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 4089, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 2699, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/layout.py", line 886, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/transition.py", line 378, in render
+    bottom = render(self.old_widget, width, height, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/layout.py", line 886, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/layout.py", line 886, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/transform.py", line 909, in render
+    return RenderTransform(self).render(width, height, st, at)
+  File "accelerator.pyx", line 979, in renpy.display.accelerator.RenderTransform.render
+  File "accelerator.pyx", line 404, in renpy.display.accelerator.RenderTransform.render_child
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/image.py", line 513, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/image.py", line 316, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 676, in render
+    return cache.get(self, render=True)
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 330, in get
+    surf = image.load()
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 803, in load
+    raise e
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 757, in load
+    filelike = renpy.loader.load(self.filename, directory="images")
+  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/loader.py", line 833, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'cs_guy.png'.
+
+While loading <renpy.display.im.Image object ('cs_guy.png') at 0x1080f39a0>:
+  File "game/script.rpy", line 236, in script
+    mc "Hey Brian! It’s great to meet you, excited to hang out with you!"
+  File "renpy/common/000window.rpy", line 114, in _window_auto_callback
+    _window_show(auto=True)
+  File "renpy/common/000window.rpy", line 69, in _window_show
+    renpy.with_statement(trans)
+OSError: Couldn't find file 'cs_guy.png'.
+Resetting cache.
+Bootstrap to the start of init.init. took 73.87s
+Early init. took 0.00s
+Loader init. took 0.02s
+Loading error handling. took 0.06s
+Loading script. took 0.22s
+Loading save slot metadata. took 0.03s
+Loading persistent. took 0.00s
+Running init code. took 0.03s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.06s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1280, 800)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Intel Inc.'"
+Renderer: b'Intel(R) Iris(TM) Graphics 6100'
+Version: b'2.1 INTEL-10.36.32'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1280, 707) drawable=(2560, 1414)
 Maximum texture size: 4096x4096
 Cleaning stores took 0.00s
 Init translation took 0.00s

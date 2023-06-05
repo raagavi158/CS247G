@@ -18,7 +18,7 @@ define anonymous_guy = Character("Killer", color="#c8ffc8", image="anonymous_guy
 image startup_girl = "startup_girl.png"
 
 image cs_guy = "cs_guy.png"
-image frat_bro = "frat_bro.png"
+image frat_bro = "frat_guy.png"
 image hinge = 'hinge.jpeg'
 image police_officer = 'police_officer.png'
 image anonymous_guy = 'anonymous_guy.png'
@@ -51,7 +51,7 @@ label start:
         zoom 1.75
     
     show hinge:
-        zoom 1.5
+        zoom 1.3
         truecenter
 
     "There’s no way there was no evidence. The killer showed no remorse, their dating profile is probably still active. I have to find the murderer, guess it’s time to get on Tinge."
@@ -75,6 +75,7 @@ label middle:
         zoom 1.75
     
     show hinge:
+        zoom 1.3
         truecenter
     
     "Repeat a date or click a new one!"
@@ -94,8 +95,8 @@ label middle:
 
 # Define the date label
 label frat_bro_date:
-    scene bg fountain: 
-        zoom 3
+    scene bg frat: 
+        zoom 1.5
 
     # Increment the love level
     $ love += 1
@@ -222,8 +223,8 @@ label frat_bro_date:
     jump middle
 
 label CS_guy_date:
-    scene bg coho: 
-        zoom 0.75
+    scene bg huang: 
+        zoom 1.5
 
     # Increment the love level
     $ love += 1
@@ -292,13 +293,13 @@ label CS_guy_date:
 
 label start_up_date:
     scene bg coupa: 
-        zoom 3
+        zoom 1.4
 
     # Increment the love level
     $ love += 1
     $ date_counter += 1
     show startup_girl:
-        zoom 1.5
+        zoom 2
 
     # Display the date dialogue
     mc "Hey there! So, you're all about startups and entrepreneurship, huh? Changing the world one app at a time?"
