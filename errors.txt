@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label frat_bro_date is defined twice, at File "game/script.rpy", line 77:
-label frat_bro_date:
-and File "game/script.rpy", line 104:
-label frat_bro_date:
-
+File "game/script.rpy", line 44: expected 'comma or end of line' not found.
+    show hinge
+    ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Wed May 24 23:07:11 2023
+Sun Jun  4 17:44:30 2023

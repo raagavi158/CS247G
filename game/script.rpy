@@ -6,13 +6,15 @@ default love = 0
 
 # Define the character to be dated
 
-define startup_girl = Character("SBF", color="#c8ffc8", image="startup_guy")
+define startup_girl = Character("SBF", color="#c8ffc8", image="startup_girl")
 define cs_guy = Character("Brian", color="#c8ffc8", image="cs_guy")
 define frat_bro = Character("Chad", color="#c8ffc8", image="frat_bro")
 
-image startup_girl = "startup_guy.png"
+image startup_girl = "startup_girl.png"
+
 image cs_guy = "cs_guy.png"
 image frat_bro = "frat_bro.png"
+image hinge = 'hinge.jpeg'
 
 image card = "card.jpeg"
 
@@ -37,29 +39,32 @@ label start:
     
     "Jim was my freshman year roommate and we’ve lived together every year since. I can’t believe he’s gone, I warned him to not go on dates with weirdos on this campus."
 
-
-    scene bg hinge:
-        zoom 1.50
-        truecenter
+    scene bg oval: 
+        zoom 1.75
     
+    show hinge:
+        truecenter
+
     "There’s no way there was no evidence. The killer showed no remorse, their dating profile is probably still active. I have to find the murderer, guess it’s time to get on Tinge."
 
 
     
     menu:
         "Who are you swiping on?"
-        "Stanford start-up guy":
+        "Stanford Start-up Girl (Britneigh)":
             jump start_up_date
-        "Nerdy CS student":
+        "Nerdy CS Guy (Brian)":
             jump CS_guy_date
-        "Frat bro":
+        "Frat Bro (Brett)":
             jump frat_bro_date
 
 label middle:
 
-    scene bg hinge:
-            zoom 1.50
-            truecenter
+    scene bg oval: 
+        zoom 1.75
+    
+    show hinge:
+        truecenter
     
     "Repeat a date or click a new one!"
 
@@ -85,18 +90,119 @@ label frat_bro_date:
         zoom 1.5
 
     # Display the date dialogue
-    frat_bro "Hey, thanks for coming out with me! Let's go grab some food."
+    mc "Hey Brett! Damn I’ve never been in the house before. Thanks for letting me in!"
+    frat_bro "Absolutely my guy. Anything for a good time ;)"
+    mc "Uh… yeah absolutely? Anyways…"
 
     # Display the food choice
     menu:
-        "What would you like to eat?"
-        "Pizza":
-            frat_bro "Great choice! I love pizza too."
-        "Sushi":
-            frat_bro "I'm not a big fan of sushi, but I'll try it for you."
-        "Burgers":
-            frat_bro "Classic choice! I'll get the fries."
+        "Not to be a buzzkill, but my roommate Jim was the guy that died last weekend and I’ve been trying to find out anything related to the murder.":
+            frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
+            menu frat_guy_location:
+                "Where were you on that night?":
+                    frat_bro "Well I won’t lie, I was hanging out with him at lake lag that night. But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
+                    menu talk_about: 
+                        "Did y’all talk about anything else?":
+                            frat_bro "I guess we did talk about this thing that a few of my other friends, Britneigh and Brian, were building, AlibiAI. We were laughing about it because it was an idea that seemed so dumb, so I encouraged Brian to go through with building it as a prank, and I even managed to get him to pitch the idea to Britneigh. LOL! It was kind of strange though — Britneigh seemed a little wayyy too excited for the idea for some reason ahaha."
+                            "{i}Brett and Britneigh were also Jim's romantic interests that you thought of as possible suspects.{/i}"
+                            frat_bro "But anyways, I wanted to ask you…are you FTB? As in… FOR THE BOYS????"
+                            menu:
+                                "Absolutely not. I have reason to believe you might have murdered Jim.":
+                                    frat_bro "Whoa whoa whoa! That’s a really strong accusation! I told you I left him there at lake lag, and I don’t know what happened to him after that if he was murdered then. How dare you accuse me! I think you should leave."
+                                    jump middle
+                                "Hell yeah, brother!":
+                                    frat_bro "HELL YEAH BROTHER!! Alright man, listen…I can tell you’re a good guy. You’d make a good BROTHER. And I want to tell you the secret fraternity Latin phrase to seal the deal with your future acceptance into the fraternity. Here, it’s written on this piece of paper in this envelope. Take it with you, and open it once you are in private."
+                                    #show the clue
+                                    mc "Thanks!"
+                        "Can you prove that you left him before he died and that you didn’t murder him?":
+                            frat_bro "Nah I can’t prove it man, but you can choose to believe me! I’m a good guy, I swear. We’re the nice-guy frat, along with being the cs-bro frat."
+                            menu:
+                                "{i}Ask about what Jim and him talked about.{/i}":
+                                    jump talk_about
+                                "Absolutely not. I have reason to believe you might have murdered Jim.":
+                                    frat_bro "Whoa whoa whoa! That’s a really strong accusation! I told you I left him there at lake lag, and I don’t know what happened to him after that if he was murdered then. How dare you accuse me! I think you should leave."
+                                    jump middle
 
+                "Is that really your reaction to our friend’s death? That’s a little fucked up...":
+                    frat_bro "Well, after I found out that he wasn’t FTB — FOR THE BOYS — I didn’t really care for him after that. I was hanging out with him at lake lag when I found out he doesn’t vibe with the boys, so I left him there. But it won’t be like that with you, right?"
+                    menu:
+                        "You just left him there? I don’t believe that…":
+                            frat_bro "Whoa whoa whoa! Are you trying to accuse me of murdering Jim? That’s a really strong accusation! I told you I left him there at lake lag, and I don’t know what happened to him after that if he was murdered then. How dare you accuse me! I think you should leave."
+                            jump middle
+                        "{i}Ask about what Jim and him talked about.{/i}":
+                            jump talk_about
+        "Damn, what frat is this house for? You guys seem like you’d have a lit time here.":
+            frat_bro "Abso-fucking-lutely my guy! We throw down all the time and it’s always a great time here at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa. It’s been a bit busy because of pledge or, sorry our new member process, but it’s been fun overall."
+            menu:
+                "What kind of things do you do for pledge?":
+                    frat_bro "Ah sorry man, that’s a secret. Let’s just say it involves Lake Lag. That’s all I’ll say. But it’s a lit ass time brother — if you want to rush our frat, you can see for yourself!"
+                    menu:
+                        "Lake lag? Are you aware about what happened with Jim there?":
+                            frat_bro "Um, if you’re referring to me taking him there, yeah. I was hanging out with him at lake lag one night. But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
+                            jump talk_about
+                        "Not to be a buzzkill, but my roommate Jim was the guy that died last weekend and I’ve been trying to find out anything related to the murder.":
+                            jump frat_guy_location
+                "Yeah, I want to rush! I’d like to be a part of the frat too!":
+                    frat_bro "Hmm…I don’t know yet. We at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa are very selective in our process of choosing the new pledge class. I’ve got to get to know you better first, and I think you have to get to know me better too. Ask me some more questions."
+                    menu besides_pledge:
+                        "Have you hung out at Lake Lag recently, besides for pledge?":
+                            frat_bro "Yeah actually, that’s a lit place for a date! I took a guy I was seeing, Jim, to that spot. But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
+                            menu:
+                                "{i}Ask about what Jim and him talked about.{/i}":
+                                    jump talk_about
+                                "Do you know who Jim is? Did you know he’s been murdered recently at Lake Lag?":
+                                    frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
+                                    jump frat_guy_location
+                        "Be upfront and interrogate Brett directly about Jim’s murder.":
+                            jump frat_guy_location
+                "Dang, let me know when y’all are throwing down next!":
+                    frat_bro "For sure man! It’s always a lit ass time when Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa throws down. You gotta be FTB to come through though — FOR THE BROTHERHOOD."
+                    menu:
+                        "Hell yeah brother, I am FTB! If it means being with more guys like you, that’d be awesome.":
+                            frat_bro "Hmm…I don’t know yet. We at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa are very selective in our process of choosing the new pledge class. I’ve got to get to know you better first, and I think you have to get to know me better too. Ask me some more questions."
+                            menu:
+                                "{i}Ask if he has been at Lake Lag recently, besides for pledge.{/i}":
+                                    jump besides_pledge
+                                "Do you know who Jim is? Did you know he’s been murdered recently at Lake Lag?":
+                                    frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
+                                    jump frat_guy_location
+                        "I was kidding. To “throw down” with you is not why I’m actually here. I wanted to ask about Jim. He was murdered.":
+                            mc "Not to be a buzzkill, but my roommate Jim was the guy that died last weekend and I’ve been trying to find out anything related to the murder."
+                            jump frat_guy_location
+        "Other than this house, where do you think the best place is to party at?":
+            frat_bro "You came to the right guy to ask that question. No doubt it’s this one spot by Lake Lag. Hella good vibes and we always turn up there because only a few people know where it is. I took someone there a while ago and it was fun."
+            menu:
+                "Who did you take there?":
+                    frat_bro "I took this other person I was seeing at the time, Jim. He wanted to get lit with us so I took him there, and we had a good time. Didn’t hear from him after that though. But I mean, if you’re for the BROTHERHOOD, and are possibly thinking about joining the frat too, let me know and I can take you there too, or anywhere else."
+                    menu:
+                        "{i}Ask about what Jim and him talked about.{/i}":
+                            jump talk_about
+                        "You have no idea why you haven’t heard back from him?":
+                            frat_bro "I mean, I heard something about a murder on Fizz, and I thought for a second that it might’ve been about Jim, but I wasn’t sure. I just figured he was just ghosting me."
+                            menu:
+                                "Actually, it was him. Not to be a buzzkill, but my roommate Jim was the guy that died last weekend and I’ve been trying to find out anything related to the murder.":
+                                    jump frat_guy_location
+                                "Yeah, I think he was just ghosting you.":
+                                    frat_bro "Damn, fuck him then. I’ll take you to Lake Lag later too if you’d like?"
+                                    mc "No thanks. I gotta go."
+                                    jump middle
+                        "You didn’t hear from him because you murdered him, didn’t you!":
+                            frat_bro "Whoa whoa whoa! That’s a really strong accusation! I didn’t even know Jim was murdered or died! How dare you accuse me! I think you should leave."
+                            jump middle
+                "Dang, when are you taking me there?":
+                    frat_bro "I’ll take you whenever you want man! It’s a lit ass spot. You gotta be FTB to go with me though — FOR THE BROTHERHOOD."
+                    menu:
+                        "I’m down! I am FTB — if it means being with more guys like you, that’d be awesome. Can I join the frat?":
+                            frat_bro "Hmm…I don’t know yet. We at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa are very selective in our process of choosing the new pledge class. I’ve got to get to know you better first, and I think you have to get to know me better too. Ask me some more questions."
+                            menu:
+                                "Have you hung out at Lake Lag recently, besides for pledge?":
+                                    jump besides_pledge
+                                "Do you know who Jim is? Did you know he’s been murdered recently at Lake Lag?":
+                                    frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
+                                    jump frat_guy_location
+                        "I was kidding. To hang out with you is not why I’m actually here. I wanted to ask about Jim. He was murdered.":
+                            jump frat_guy_location
+                        
     # Display the ending
     frat_bro "Thanks for a great date! Let's do it again sometime."
     jump middle
@@ -206,6 +312,8 @@ label start_up_date:
                         jump next_big_thing
 
         "So what’s your next big thing?":
+            show startup_girl flirty:
+                zoom 1.5
             label next_big_thing:
                 startup_girl "'AlibiAI' – the ultimate solution for concealing unsavory activities. It's a revolutionary app that helps you create foolproof alibis, no questions asked."
                 startup_girl "AlibiAI is all about empowering individuals to control their narratives. It's not just for criminals, but for anyone who wants to maintain privacy, protect their reputation, or maybe even hide a harmless secret or two."
