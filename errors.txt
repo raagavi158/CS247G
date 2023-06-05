@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 44: expected 'comma or end of line' not found.
-    show hinge
-    ^
+File "game/script.rpy", line 65: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "Call the police"
+                     ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Sun Jun  4 17:44:30 2023
+Sun Jun  4 22:01:36 2023

@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 141, in script
-    startup_girl "Absolutely! I'm like the Elon Musk of dorm room innovations. The next big thing is just a pitch deck away!"
-Exception: Sayer 'startup_girl' is not defined.
+  File "game/script.rpy", line 475, in script
+    anonymous_guy "Sorry to do this to you, but I just can’t let you go free, especially when you know too much! I'm going to have to kill you!"
+Exception: Sayer 'anonymous_guy' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 141, in script
-    startup_girl "Absolutely! I'm like the Elon Musk of dorm room innovations. The next big thing is just a pitch deck away!"
+  File "game/script.rpy", line 475, in script
+    anonymous_guy "Sorry to do this to you, but I just can’t let you go free, especially when you know too much! I'm going to have to kill you!"
   File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 890, in execute
     who = eval_who(self.who, self.who_fast)
   File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 783, in eval_who
     raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'startup_girl' is not defined.
+Exception: Sayer 'anonymous_guy' is not defined.
 
 macOS-10.13.6-x86_64-i386-64bit x86_64
 Ren'Py 8.1.0.23051307
 CS247G 1.0
-Wed May 24 23:09:24 2023
+Sun Jun  4 22:44:52 2023

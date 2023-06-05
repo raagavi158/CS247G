@@ -4,17 +4,25 @@ define mc = Character("Me")
 # Define the love level variable
 default love = 0
 
+# Define the total date counter variable
+default date_counter = 0
+
 # Define the character to be dated
 
-define startup_girl = Character("SBF", color="#c8ffc8", image="startup_girl")
+define startup_girl = Character("Britneigh", color="#c8ffc8", image="startup_girl")
 define cs_guy = Character("Brian", color="#c8ffc8", image="cs_guy")
-define frat_bro = Character("Chad", color="#c8ffc8", image="frat_bro")
+define frat_bro = Character("Brett", color="#c8ffc8", image="frat_bro")
+define police_officer = Character("Police", color="#c8ffc8", image="police_officer")
+define anonymous_guy = Character("Killer", color="#c8ffc8", image="anonymous_guy")
 
 image startup_girl = "startup_girl.png"
 
 image cs_guy = "cs_guy.png"
 image frat_bro = "frat_bro.png"
 image hinge = 'hinge.jpeg'
+image police_officer = 'police_officer.png'
+image anonymous_guy = 'anonymous_guy.png'
+
 
 image card = "card.jpeg"
 
@@ -43,6 +51,7 @@ label start:
         zoom 1.75
     
     show hinge:
+        zoom 1.5
         truecenter
 
     "There’s no way there was no evidence. The killer showed no remorse, their dating profile is probably still active. I have to find the murderer, guess it’s time to get on Tinge."
@@ -57,6 +66,8 @@ label start:
             jump CS_guy_date
         "Frat Bro (Brett)":
             jump frat_bro_date
+        "Call the police":
+            jump police_segment
 
 label middle:
 
@@ -70,12 +81,14 @@ label middle:
 
     menu:
         "Who are you swiping on?"
-        "Stanford start-up guy":
+        "Stanford Start-up Girl (Britneigh)":
             jump start_up_date
-        "Nerdy CS student":
+        "Nerdy CS Guy (Brian)":
             jump CS_guy_date
-        "Frat bro":
+        "Frat Bro (Brett)":
             jump frat_bro_date
+        "Call the police":
+            jump police_segment
     
 
 
@@ -86,6 +99,7 @@ label frat_bro_date:
 
     # Increment the love level
     $ love += 1
+    $ date_counter += 1
     show frat_bro:
         zoom 1.5
 
@@ -117,7 +131,7 @@ label frat_bro_date:
                         "Can you prove that you left him before he died and that you didn’t murder him?":
                             frat_bro "Nah I can’t prove it man, but you can choose to believe me! I’m a good guy, I swear. We’re the nice-guy frat, along with being the cs-bro frat."
                             menu:
-                                "{i}Ask about what Jim and him talked about.{/i}":
+                                "Did y’all talk about anything in particular?":
                                     jump talk_about
                                 "Absolutely not. I have reason to believe you might have murdered Jim.":
                                     frat_bro "Whoa whoa whoa! That’s a really strong accusation! I told you I left him there at lake lag, and I don’t know what happened to him after that if he was murdered then. How dare you accuse me! I think you should leave."
@@ -129,7 +143,7 @@ label frat_bro_date:
                         "You just left him there? I don’t believe that…":
                             frat_bro "Whoa whoa whoa! Are you trying to accuse me of murdering Jim? That’s a really strong accusation! I told you I left him there at lake lag, and I don’t know what happened to him after that if he was murdered then. How dare you accuse me! I think you should leave."
                             jump middle
-                        "{i}Ask about what Jim and him talked about.{/i}":
+                        "Did y’all talk about anything in particular?":
                             jump talk_about
         "Damn, what frat is this house for? You guys seem like you’d have a lit time here.":
             frat_bro "Abso-fucking-lutely my guy! We throw down all the time and it’s always a great time here at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa. It’s been a bit busy because of pledge or, sorry our new member process, but it’s been fun overall."
@@ -148,7 +162,7 @@ label frat_bro_date:
                         "Have you hung out at Lake Lag recently, besides for pledge?":
                             frat_bro "Yeah actually, that’s a lit place for a date! I took a guy I was seeing, Jim, to that spot. But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
                             menu:
-                                "{i}Ask about what Jim and him talked about.{/i}":
+                                "Did y’all talk about anything in particular?":
                                     jump talk_about
                                 "Do you know who Jim is? Did you know he’s been murdered recently at Lake Lag?":
                                     frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
@@ -175,7 +189,7 @@ label frat_bro_date:
                 "Who did you take there?":
                     frat_bro "I took this other person I was seeing at the time, Jim. He wanted to get lit with us so I took him there, and we had a good time. Didn’t hear from him after that though. But I mean, if you’re for the BROTHERHOOD, and are possibly thinking about joining the frat too, let me know and I can take you there too, or anywhere else."
                     menu:
-                        "{i}Ask about what Jim and him talked about.{/i}":
+                        "Did y’all talk about anything in particular?":
                             jump talk_about
                         "You have no idea why you haven’t heard back from him?":
                             frat_bro "I mean, I heard something about a murder on Fizz, and I thought for a second that it might’ve been about Jim, but I wasn’t sure. I just figured he was just ghosting me."
@@ -213,6 +227,7 @@ label CS_guy_date:
 
     # Increment the love level
     $ love += 1
+    $ date_counter += 1
     show cs_guy:
         zoom 1.5
 
@@ -281,6 +296,7 @@ label start_up_date:
 
     # Increment the love level
     $ love += 1
+    $ date_counter += 1
     show startup_girl:
         zoom 1.5
 
@@ -374,20 +390,87 @@ label start_up_date:
                 "I was making fun of you. I don’t even like rock climbing. What I really want to know is that you were doing on the night that my roommate Jim was murdered!":
                     jump down_to_business
         
-
-
-
     # Display the ending
     startup_girl "Thanks for a great date! Let's do it again sometime."
     jump middle
 
-# Define the ending label
-label end:
+label police_segment:
+    if date_counter < 3:
+        "{i}Sorry you haven't been on all of the dates!{/i}"
+        jump middle
+    scene bg police: 
+        zoom 1
+    show police_officer:
+        zoom 2
+    
+    police_officer "This is Stanford Police open up."
+    mc "Woah, hi there. How can I help you?"
+    police_officer "We’re just here to ask a few questions regarding the recent death of your roommate."
+    police_officer "While we have no particular suspects, we need to start by asking if you knew anything that could help with the investigation of the murder. Is there anyone that you are aware of that your roommate interacted with prior to their death?"
+    menu:
+        mc "Yes! I know who did it! It was"
+        "Brett":
+            police_officer "Hm… interesting… Alright, we will go arrest him right away"
+            scene bg black:
+                zoom 10
+            show frat_bro:
+                zoom 1.5
+            police_officer "THIS IS STANFORD POLICE! OPEN UP!"
+            police_officer "YOU’RE UNDER ARREST FOR THE MURDER OF JIM!"
+            frat_bro "Woah woah woah! Chill man! I didn’t do anything alright. What are you guys even talking about?!"
+            police_officer "We know you’re lying! Get on the floor and put your hands behind your back!"
+            frat_bro "NO! Wait, I really don’t know what’s happening! Can we all just chill the fuck out?! My boys are gonna be furious if they find out this has happened!"
+            police_officer "Where you’re going no one will be FTB and you’ll be kept away from the boys for a long long time!"
+            frat_bro "NO! NOT MY BOYS! I NEED MY BOYS! NOOOOOOO!!!!!!"
+            jump correct_killer_identified
+        "Brian":
+            police_officer "Hm… interesting… Alright, we will go arrest him right away"
+            scene bg black:
+                zoom 10
+            show cs_guy:
+                zoom 1.5
+            police_officer "THIS IS STANFORD POLICE! OPEN UP!"
+            police_officer "YOU’RE UNDER ARREST FOR THE MURDER OF JIM!"
+            cs_guy "What?! I don’t even know who that is?! What are you talking about?"
+            police_officer "Of course you know! You murdered him!"
+            cs_guy "How do I have time to think about murdering someone, much less having the time to actually do it, when I’m literally grinding 229, 140, and 110 at the same time?"
+            police_officer "We don’t care what those numbers mean nor do we like to think about numbers! Get on the ground!"
+            cs_guy "I swear you have the wrong person! No! I was just about to push my latest commit too and then submit the psets!!!! Just let me submit them first!!!!!!!!"
+            jump wrong_murderer
+        "Britneigh":
+            police_officer "Hm… interesting… Alright, we will go arrest him right away"
+            scene bg black:
+                zoom 10
+            show startup_girl:
+                zoom 1.5
+            police_officer "THIS IS STANFORD POLICE! OPEN UP!"
+            police_officer "YOU’RE UNDER ARREST FOR THE MURDER OF JIM!"
+            startup_girl "What?! I don’t even know who that is?! What are you talking about?"
+            police_officer "Of course you know! You murdered him!"
+            startup_girl "I’ve literally been meeting with 20 VCs a day!? How could I possibly enough care enough about anyone to not flake with them, much less carry out a murder?"
+            police_officer "That’s exactly the type of cold heartless personality that would kill someone and hide it perfectly! Get on the ground!"
+            startup_girl "I swear you have the wrong person! No! I was literally just about to grab coffee with Pearquoia Ventures and raise for my pre-pre Series F funding round! Please let me just circle back with them really quickly!"
+            jump wrong_murderer
+            
+            
 
-    # Display the ending dialogue based on the love level
-    if love >= 1:
-        mc "I had a really great time. Maybe we can go on another date soon."
-    else:
-        mc "I'm not sure I'm interested in dating Stereotype again, but I'm glad I gave it a try."
 
-return 
+
+
+label correct_killer_identified:
+    scene bg oval: 
+        zoom 1.75
+    "You caught the correct killer! Congrats!"
+    return
+
+label wrong_murderer:
+    scene bg dorm: 
+        zoom 3
+    mc "Wow thank god, we finally caught the murderer. I’m glad that’s over with. "
+    scene bg murder:
+        zoom 4
+    show anonymous_guy:
+        zoom 2.5
+    anonymous_guy "Sorry to do this to you, but I just can’t let you go free, especially when you know too much! I'm going to have to kill you!"
+    "Oops! You identified the wrong murderer. Play the game again!"
+    return
