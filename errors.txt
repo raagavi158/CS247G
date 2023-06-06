@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 105: invalid syntax
-    password_lower = !l(password)
-                      ^
+File "game/script.rpy", line 315: expected 'image_name_component' not found.
+    show 
+         ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Mon Jun  5 19:10:20 2023
+Tue Jun  6 00:10:44 2023

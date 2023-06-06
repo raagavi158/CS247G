@@ -1,28 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 106, in script
-    while password_lower != "ask_brett_what_he_found_at_lake_lag" or password_lower != "ask brett what he found at lake lag":
-  File "game/script.rpy", line 106, in <module>
-    while password_lower != "ask_brett_what_he_found_at_lake_lag" or password_lower != "ask brett what he found at lake lag":
-NameError: name 'password_lower' is not defined
+  File "game/script.rpy", line 364, in script
+    jump ask_about_cs_guy
+ScriptError: could not find label 'ask_about_cs_guy'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 106, in script
-    while password_lower != "ask_brett_what_he_found_at_lake_lag" or password_lower != "ask brett what he found at lake lag":
-  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 2076, in execute
-    if renpy.python.py_eval(self.condition):
-  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/python.py", line 1153, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "/Users/shreyashubhangi/Desktop/renpy-8.1.0-sdk/renpy/python.py", line 1146, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 106, in <module>
-    while password_lower != "ask_brett_what_he_found_at_lake_lag" or password_lower != "ask brett what he found at lake lag":
-NameError: name 'password_lower' is not defined
+  File "game/script.rpy", line 364, in script
+    jump ask_about_cs_guy
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 1992, in execute
+    rv = renpy.game.script.lookup(target)
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/script.py", line 1013, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'ask_about_cs_guy'.
 
-macOS-10.13.6-x86_64-i386-64bit x86_64
+macOS-12.6-arm64-arm-64bit arm64
 Ren'Py 8.1.0.23051307
 CS247G 1.0
-Mon Jun  5 19:21:17 2023
+Tue Jun  6 00:06:07 2023

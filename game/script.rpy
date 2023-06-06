@@ -29,7 +29,12 @@ image hinge = 'hinge_profile.jpg'
 image hinge1 = 'hinge_profile_1.jpg'
 image hinge2 = 'hinge_profile_2.jpg'
 image police_officer = 'police_officer.png'
-image anonymous_guy = 'anonymous_guy.png'
+image anonymous_guy = 'Asset 7.svg'
+
+image cl1 = "Asset 12.png"
+image cl2 = "Asset 13.png"
+image cl3 = "Asset 11.png"
+image cl4 = "Asset 10.png"
 
 
 image card = "card.jpeg"
@@ -95,11 +100,15 @@ label middle:
 label puzzle:
     scene bg black: 
         zoom 10
-        truecenter
-    show card:
-        xalign 0.2 yalign 0.4
-    show startup_girl:
-        xalign 0.7 yalign 0.4
+    show cl1:
+        zoom 1.5
+        xalign 0.05 yalign 0.2
+    show cl2:
+        zoom 1.5
+        xalign 0.85 yalign 0.2
+    show cl3:
+        zoom 1.5
+        xalign 0.45 yalign 0.85
     mc "Alright, now I know these clues must all be related somehow. But what do all of these clues mean?"
     $ password = renpy.input("What is the secret message?", length=35)
     $ password = password.lower()
@@ -122,7 +131,7 @@ label frat_bro_date:
     $ love += 1
     $ date_counter += 1
     show frat_bro:
-        zoom 1.5
+        zoom 1
         truecenter
     if puzzle_solved == 1: 
         jump brett_menu
@@ -162,7 +171,9 @@ label frat_bro_date:
                                         show frat_bro weird
                                         frat_bro "HELL YEAH BROTHER!! Alright man, listen…I can tell you’re a good guy. You’d make a good BROTHER. And I want to tell you the secret fraternity Latin phrase to seal the deal with your future acceptance into the fraternity."
                                         frat_bro "Here, it’s written on this piece of paper in this envelope. Take it with you, and open it once you are in private."
-                                        #show the clue
+                                        show cl3: 
+                                            zoom 1.5
+                                            truecenter
                                         $ clue3 += 1
                                         mc "Thanks!"
                         "{i}Ask him to prove that Brett left Jim there before he died.{/i}":
@@ -299,10 +310,12 @@ label frat_bro_date:
             mc "Hey, it's really cold out here, could I borrow a hoodie?"
             show frat_bro weird
             frat_bro "Yeah bro, it’s funny you mention that, I found this sweet hoodie. It’s got some red stains on it, but it’ll probably come out when you wash it"
-            mc "Thanks so much! I'll return it next week. Bye!"
-            frat_bro "Keep it, I just found it lying near Lag and finders keeper yaknow"
+            show cl4:
+                zoom 2
+                truecenter
             $ clue4 += 1
-            #show hoodie
+            mc "Thanks so much! I'll return it next week. Bye!"
+            frat_bro "Keep it, I just found it lying near Lag and finder keeper or whatever yaknow"
             jump middle
                         
     # Display the ending
@@ -318,8 +331,9 @@ label CS_guy_date:
     # Increment the love level
     $ love += 1
     show cs_guy:
-        zoom 1.3
+        zoom 1
         truecenter
+    $ date_counter += 1
 
     # Display the date dialogue
     mc "Hey Brian! It’s great to meet you, excited to hang out with you!"
@@ -354,7 +368,7 @@ label CS_guy_date:
                                     menu: 
                                         "Yes":
                                             mc "Sure"
-                                            jump ask_about_cs_guy
+                                            jump ask_more_alibi_ai
                                         "No":
                                             mc "No, I'm good"
                                             show cs_guy angry
@@ -382,7 +396,8 @@ label CS_guy_date:
                                         mc "That sounds like a really cool project! It sounds like a very technically challenging engineering problem, so it’s so cool to see that you’re smart enough to tackle it."
                                         cs_guy "Oh, you’re too kind! But also you’re not wrong. Doesn’t AlibiAI sound like a pretty awesome project? It’s awesome to see that great can recognize great."
                                         cs_guy "Here, I can give you the access key to the beta demo if you want to check it out?"
-                                        show card:
+                                        show cl1:
+                                            zoom 1.7
                                             xalign 0.5 yalign 0.4
                                         $ clue1 += 1
                                         show cs_guy shy
@@ -447,14 +462,15 @@ label CS_guy_date:
                     jump frat_converge_2
 
 label start_up_date:
-    scene bg coupa 2: 
-        zoom 1.2
+    scene bg coupa: 
+        zoom 1
         truecenter
+    $ date_counter += 1
 
     # Increment the love level
     $ love += 1
     show startup_girl:
-        zoom 1.5
+        zoom 1
         truecenter
 
     # Display the date dialogue
@@ -523,7 +539,8 @@ label start_up_date:
                                         mc "I guess I get why you’d want to take the credit. It is a really cool idea, after all. It’s honestly so impressive how you’re spearheading the business side of things."
                                         show startup_girl flirty
                                         startup_girl "Thanks so much! It’s cool to see that it seems like an exciting project to you too! Here, I gotta get going, but let me give you my business card so we can chat more later. Would love to grab a meal sometime!"
-                                        show card:
+                                        show cl2:
+                                            zoom 1.5
                                             xalign 0.5 yalign 0.4
                                         $ clue2 += 1
                                         mc "Bye!"
@@ -543,7 +560,8 @@ label start_up_date:
                                     "{i}Affirm her desire to take credit and give her positive validation.{/i}":
                                         mc "I guess I get why you’d want to take the credit. It is a really cool idea, after all. It’s honestly so impressive how you’re spearheading the business side of things."
                                         startup_girl "Thanks so much! It’s cool to see that it seems like an exciting project to you too! Here, I gotta get going, but let me give you my business card so we can chat more later. Would love to grab a meal sometime!"
-                                        show card:
+                                        show cl2:
+                                            zoom 1.5
                                             xalign 0.5 yalign 0.4
                                         $ clue2 += 1
                                         mc "Bye!"
@@ -587,7 +605,7 @@ label police_segment:
     scene bg police: 
         zoom 1
     show police_officer:
-        zoom 2 
+        zoom 1
         truecenter
     
     police_officer "This is Stanford Police open up."
@@ -667,12 +685,12 @@ label correct_killer_identified:
 
 label wrong_murderer:
     scene bg dorm: 
-        zoom 3
+        zoom 1.7
     mc "Wow thank god, we finally caught the murderer. I’m glad that’s over with. "
     scene bg murder:
         zoom 4
     show anonymous_guy:
-        zoom 2.5
+        zoom 1
         truecenter
     anonymous_guy "Sorry to do this to you, but I just can’t let you go free, especially when you know too much!"
     anonymous_guy "I'm going to have to kill you before they realize they have the wrong person!"
