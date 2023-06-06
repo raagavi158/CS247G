@@ -1,25 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('fizz.ong') at 0x11a68d9d0>:
-  File "game/script.rpy", line 53, in script
-    "Eventually, after not hearing from my roomate, I realized that these Fizz and FoHo posts are about Jim!"
-OSError: Couldn't find file 'fizz.ong'.
+While loading <renpy.display.im.Image object ('images/startup_girl sad.png') at 0x102f4fe20>:
+  File "game/script.rpy", line 469, in script
+    menu:
+OSError: Couldn't find file 'images/startup_girl sad.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 53, in script
-    "Eventually, after not hearing from my roomate, I realized that these Fizz and FoHo posts are about Jim!"
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 930, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/exports.py", line 1473, in say
-    who(what, *args, **kwargs)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/character.py", line 1349, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/character.py", line 1000, in do_display
-    display_say(who,
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/character.py", line 690, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "game/script.rpy", line 469, in script
+    menu:
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 1922, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/exports.py", line 1106, in menu
+    rv = renpy.store.menu(new_items)
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/exports.py", line 1345, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
   File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 3499, in interact
@@ -63,9 +59,9 @@ Full traceback:
     filelike = renpy.loader.load(self.filename, directory="images")
   File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/loader.py", line 833, in load
     raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'fizz.ong'.
+OSError: Couldn't find file 'images/startup_girl sad.png'.
 
 macOS-12.6-arm64-arm-64bit arm64
 Ren'Py 8.1.0.23051307
 CS247G 1.0
-Mon Jun  5 17:04:49 2023
+Mon Jun  5 17:39:33 2023

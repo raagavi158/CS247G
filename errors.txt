@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 191: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}"
-                                                                          ^
-
-File "game/script.rpy", line 195: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}"
-                                                                          ^
+File "game/script.rpy", line 105: reached end of line when expecting ':'.
+    while password != "ask_brett_what_he_found_at_lake_lag"
+                                                           ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Mon Jun  5 16:44:53 2023
+Mon Jun  5 17:36:13 2023
