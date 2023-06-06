@@ -1,67 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('images/startup_girl sad.png') at 0x102f4fe20>:
-  File "game/script.rpy", line 469, in script
-    menu:
-OSError: Couldn't find file 'images/startup_girl sad.png'.
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 469, in script
-    menu:
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 1922, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/exports.py", line 1106, in menu
-    rv = renpy.store.menu(new_items)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/exports.py", line 1345, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 3499, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 4089, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/core.py", line 2699, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/layout.py", line 886, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/layout.py", line 886, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/layout.py", line 886, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/transform.py", line 909, in render
-    return RenderTransform(self).render(width, height, st, at)
-  File "accelerator.pyx", line 979, in renpy.display.accelerator.RenderTransform.render
-  File "accelerator.pyx", line 404, in renpy.display.accelerator.RenderTransform.render_child
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/image.py", line 513, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/image.py", line 316, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 676, in render
-    return cache.get(self, render=True)
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 330, in get
-    surf = image.load()
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 803, in load
-    raise e
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/display/im.py", line 757, in load
-    filelike = renpy.loader.load(self.filename, directory="images")
-  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/loader.py", line 833, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'images/startup_girl sad.png'.
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/loadsave.py", line 813, in load
+    log.unfreeze(roots, label="_after_load")
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/rollback.py", line 1084, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/rollback.py", line 895, in rollback
+    self.load_failed()
+  File "/Users/raagaviragothaman/Desktop/renpy-8.1.0-sdk/renpy/rollback.py", line 813, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
 
 macOS-12.6-arm64-arm-64bit arm64
 Ren'Py 8.1.0.23051307
 CS247G 1.0
-Mon Jun  5 17:39:33 2023
+Mon Jun  5 17:59:31 2023

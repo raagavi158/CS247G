@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 105: reached end of line when expecting ':'.
-    while password != "ask_brett_what_he_found_at_lake_lag"
-                                                           ^
+File "game/screens.rpy", line 359: keyword argument 'xalign' appears more than once in a add statement.
+    xalign 0.2
+          ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Mon Jun  5 17:36:13 2023
+Mon Jun  5 17:54:38 2023
