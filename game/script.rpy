@@ -321,7 +321,8 @@ label frat_bro_date:
         "{i}\[Unlocked\]: Ask Brett for a hoodie {/i}" if  puzzle_solved==1:
             mc "Hey, it's really cold out here, could I borrow a hoodie?"
             show frat_bro weird
-            frat_bro "Yeah bro, it’s funny you mention that, I found this sweet hoodie. It’s got some red stains on it, but it’ll probably come out when you wash it"
+            frat_bro "Yeah bro, it’s funny you mention that, I found this sweet hoodie at Lake Lag right after the date with Jim."
+            frat_bro "It’s got some red stains on it, but it’ll probably come out when you wash it"
             show cl4:
                 zoom 2
                 truecenter
@@ -414,7 +415,6 @@ label CS_guy_date:
                                             xalign 0.5 yalign 0.4
                                         $ clue1 += 1
                                         show cs_guy shy
-                                        cs_guy "Oh shoot wrong card."
                                         cs_guy "Sorry I've got to head out really quick. Just remembered I have section. Bye!"
                                         jump middle
                                     "{i} Ask about why Brett might have encouraged him so much to build AlibiAI.{/i}":
