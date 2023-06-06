@@ -403,7 +403,7 @@ label CS_guy_date:
                                 cs_guy "AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."
                                 cs_guy "I personally thought it was a bit weird when he first told me about the idea, but I talked to my friend Brett about it, and he really strongly encouraged me to pursue it and implement it."
                                 cs_guy "I even have funding for it in the works now — I pitched my idea to some hotshot ex-CEO named Britneigh, who is now handling all the business stuff. I don’t know too much about those details though."
-                                "{i}You remember that Britneigh was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                                "{i}You remember that Brett was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
                                 menu more_alibi_ai: 
                                     "{i} Compliment his AlibiAI project and his engineering skills for being able to build it.{/i}":
                                         mc "That sounds like a really cool project! It sounds like a very technically challenging engineering problem, so it’s so cool to see that you’re smart enough to tackle it."
@@ -452,7 +452,7 @@ label CS_guy_date:
                     cs_guy "This? You think this is a lot? Oh boy, you should’ve seen me last quarter… I think I was in like 40 units! This is nothing compared to that."
                     cs_guy "This quarter has been more about focusing on my personal projects, mainly AlibiAI, and hanging out with my friend Brett who is in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa, the CS-bro frat."
                     cs_guy "He was actually the one who encouraged me to pursue implementing the tech for the personal project I mentioned."
-                    "{i}You remember that Britneigh was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                    "{i}You remember that Brett was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
                     menu frat_converge_2: 
                         "{i} Ask about why Brett might have encouraged him so much to build AlibiAI.{/i}":
                             mc "Why did Brett encourage you so much to build AlibiAI?"
@@ -474,7 +474,7 @@ label CS_guy_date:
                     cs_guy "Hmm let’s see…outside of work, sometimes I really need to let loose and I go hang out at LAIR. I just love being around CS, you know?"
                     cs_guy "But I guess other than that, and other than trying to find dates at Huang basement, I’ll hang out with my friend Brett who is in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa, the CS-bro frat."
                     cs_guy "He was actually the one who encouraged me to pursue implementing the tech for AlibiAI, the project I mentioned earlier, when I told him about it."
-                    "{i}You remember that Britneigh was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                    "{i}You remember that Brett was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
                     jump frat_converge_2
 
 label start_up_date:
