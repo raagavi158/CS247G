@@ -716,7 +716,7 @@ label wrong_murderer:
     scene bg murder:
         zoom 4
     show anonymous_guy:
-        zoom 1
+        zoom 1.2
         truecenter
     anonymous_guy "Sorry to do this to you, but I just can’t let you go free, especially when you know too much!"
     anonymous_guy "I'm going to have to kill you before they realize they have the wrong person!"
