@@ -112,7 +112,7 @@ label puzzle:
     mc "Alright, now I know these clues must all be related somehow. But what do all of these clues mean?"
     $ password = renpy.input("What is the secret message?", length=35)
     $ password = password.lower()
-    while password != "ask_brett_what_he_found_at_lake_lag" and password != "ask brett what he found at lake lag":
+    while password != "ask_brett/what_he_found" and password != "ask brett what he found at lake lag":
         $ password = renpy.input("That's not right. Guess again?", length=35)
         $ password = password.lower()
     $ puzzle_solved = 1
