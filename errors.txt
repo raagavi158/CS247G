@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 65: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Call the police"
-                     ^
+File "game/script.rpy", line 191: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}"
+                                                                          ^
+
+File "game/script.rpy", line 195: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}"
+                                                                          ^
 
 Ren'Py Version: Ren'Py 8.1.0.23051307
-Sun Jun  4 22:01:36 2023
+Mon Jun  5 16:44:53 2023
