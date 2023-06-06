@@ -101,9 +101,11 @@ label puzzle:
     show startup_girl:
         xalign 0.7 yalign 0.4
     mc "Alright, now I know these clues must all be related somehow. But what do all of these clues mean?"
-    $ password = renpy.input("What is the secret message?", length=32)
-    while lower(password) != "ask_brett_what_he_found_at_lake_lag" and lower(password) != "ask brett what he found at lake lag":
-        $ password = renpy.input("That's not right. Guess again?", length=32)
+    $ password = renpy.input("What is the secret message?", length=35)
+    $ password = password.lower()
+    while password != "ask_brett_what_he_found_at_lake_lag" and password != "ask brett what he found at lake lag":
+        $ password = renpy.input("That's not right. Guess again?", length=35)
+        $ password = password.lower()
     $ puzzle_solved = 1
     if puzzle_solved and clue4 == 0:
         "{i}Hmm it might be time to revisit Brett"
@@ -207,7 +209,6 @@ label frat_bro_date:
                                         frat_bro "Yeah actually, that’s a lit place for a date! I took a guy I was seeing, Jim, to that spot. But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
                                         menu:
                                             "{i}Ask about what they talked about.{/i}":
-                                                mc "Did y’all talk about anything in particular?"
                                                 jump talk_about_subpart
                                             "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}":
                                                 show frat_bro sad
@@ -253,7 +254,6 @@ label frat_bro_date:
                     frat_bro "Didn’t hear from him after that though. But I mean, if you’re for the BROTHERHOOD, and are possibly thinking about joining the frat too, let me know and I can take you there too, or anywhere else."
                     menu:
                         "{i}Ask about what they talked about.{/i}":
-                            mc "Did y’all talk about anything in particular?"
                             jump talk_about_subpart
                         "{i}Ask him if he might know why he hasn’t heard back from Jim.{/i}":
                             mc "You have no idea why you haven’t heard back from him?"
@@ -582,12 +582,12 @@ label start_up_date:
 
 label police_segment:
     if date_counter < 3:
-        "{i}Sorry you haven't been on all of the dates!{/i}"
+        "{i}Sorry either you haven't been on all of the dates or haven't picked up all the clues from the dates!{/i}"
         jump middle
     scene bg police: 
         zoom 1
     show police_officer:
-        zoom 2
+        zoom 2 
         truecenter
     
     police_officer "This is Stanford Police open up."
