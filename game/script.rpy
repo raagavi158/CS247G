@@ -4,7 +4,7 @@
 default love = 0
 
 # Define the total date counter variable
-default date_counter = 3
+default date_counter = 0
 default puzzle_solved = 0
 default clue1 = 0
 default clue2 = 0
