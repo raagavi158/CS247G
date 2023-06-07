@@ -6,16 +6,16 @@ default love = 0
 # Define the total date counter variable
 default date_counter = 0
 default puzzle_solved = 0
-default clue1 = 0
-default clue2 = 0
-default clue3 = 0
+default clue1 = 1
+default clue2 = 1
+default clue3 = 1
 default clue4 = 0
 default password = ""
 
 # Define the character to be dated
 
-define startup_girl = Character("Britneigh", color="#c8ffc8", image="startup_girl")
-define cs_guy = Character("Brian", color="#c8ffc8", image="cs_guy")
+define startup_girl = Character("Ashleigh", color="#c8ffc8", image="startup_girl")
+define cs_guy = Character("Chris", color="#c8ffc8", image="cs_guy")
 define frat_bro = Character("Brett", color="#c8ffc8", image="frat_bro")
 define police_officer = Character("Police", color="#c8ffc8", image="police_officer")
 define anonymous_guy = Character("Killer", color="#c8ffc8", image="anonymous_guy")
@@ -24,6 +24,7 @@ image startup_girl = "startup_girl.svg"
 image foho = "foho.png"
 image fizz = "fizz.png"
 image cs_guy = "cs_guy.png"
+image letter_num = "letter_num.png"
 image frat_bro = "frat_bro.svg"
 image hinge = 'hinge_profile.jpg'
 image hinge1 = 'hinge_profile_1.jpg'
@@ -63,8 +64,8 @@ label start:
     scene bg dorm:
         zoom 1.7
     
-    "Jim was my freshman year roommate and we’ve lived together every year since. I can’t believe he’s gone, I warned him to not go on dates with weirdos on this campus."
-    "There’s no way there was no evidence. The killer showed no remorse, their dating profile is probably still active. I have to find the murderer, guess it’s time to get on Tinge."
+    "Jim was my freshman year roommate and we’ve lived together ever since. I warned him to not go on dates with weirdos on this campus."
+    "The killer showed no remorse, their dating profile is probably still active. I have to find the murderer. Time to get on Tinge."
     jump middle
 
 label middle:
@@ -83,14 +84,17 @@ label middle:
     show hinge2:
         zoom 1.3
         xalign 0.7 yalign 0.2
+
+    if clue1 == 0 and clue2 == 0 and clue3 == 0 and date_counter>=1:
+        "Consider pretending to be interested in your dates.. They don't like being interrogated."
     
     "Repeat a date or click a new one!"
 
     menu:
         "Who are you swiping on?"
-        "Stanford Start-up Girl (Britneigh)":
+        "Stanford Start-up Girl (Ashleigh)":
             jump start_up_date
-        "Nerdy CS Guy (Brian)":
+        "Nerdy CS Guy (Chris)":
             jump CS_guy_date
         "Frat Bro (Brett)":
             jump frat_bro_date
@@ -100,19 +104,23 @@ label middle:
 label puzzle:
     scene bg black: 
         zoom 10
+    show letter_num:
+        xalign 0 yalign 0.7
+
     show cl1:
         zoom 1.5
-        xalign 0.05 yalign 0.2
+        xalign 0.15 yalign 0.1
     show cl2:
         zoom 1.5
-        xalign 0.85 yalign 0.2
+        xalign 0.95 yalign 0.2
     show cl3:
         zoom 1.5
-        xalign 0.45 yalign 0.85
+        xalign 0.55 yalign 0.85
+    "{i}You might want to grab pen and paper for this{/i}"
     mc "Alright, now I know these clues must all be related somehow. But what do all of these clues mean?"
     $ password = renpy.input("What is the secret message?", length=35)
     $ password = password.lower()
-    while password != "ask_brett/what_he_found" and password != "ask brett what he found at lake lag":
+    while password != "ask_brett_for_a_hoodie" and password != "ask brett for a hoodie":
         $ password = renpy.input("That's not right. Guess again?", length=35)
         $ password = password.lower()
     $ puzzle_solved = 1
@@ -152,27 +160,26 @@ label frat_bro_date:
                     mc "Where were you on that night?"
                     show frat_bro
                     frat_bro "Well I won’t lie, I was hanging out with him at lake lag that night."
-                    frat_bro "But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
+                    frat_bro "But I found out that he wasn’t FTB — FOR THE BOYS — that night, I left him there. I don’t know what happened after that."
                     menu talk_about: 
                         "{i}Ask about what they talked about.{/i}":
                             label talk_about_subpart:
                                 mc "Did y’all talk about anything else?"
-                                frat_bro "I guess we did talk about this thing that a few of my other friends, Britneigh and Brian, were building, AlibiAI." 
-                                frat_bro "We were laughing about it because it was an idea that seemed so dumb, so I encouraged Brian to go through with building it as a prank, and I even managed to get him to pitch the idea to Britneigh."
-                                frat_bro "LOL! It was kind of strange though — Britneigh seemed a little wayyy too excited for the idea for some reason ahaha."
-                                "{i}Brett and Britneigh were also Jim's romantic interests that you thought of as possible suspects.{/i}"
+                                frat_bro "I guess we did talk about this thing that a few of my other friends, Ashleigh and Chris, were building, AlibiAI." 
+                                frat_bro "LOL! It was kind of strange though — Ashleigh seemed a little wayyy too excited for the idea for some reason ahaha."
+                                "{i}Brett and Ashleigh were also Jim's romantic interests that you thought of as possible suspects.{/i}"
                                 frat_bro "But anyways, I wanted to ask you…are you FTB? As in… FOR THE BOYS????"
                                 menu:
                                     "{i}Say no and express your suspicion towards him.{/i}":
                                         label suspicion_frat:
                                             mc "Absolutely not. I have reason to believe you might have murdered Jim."
                                             show frat_bro angry
-                                            frat_bro "Whoa whoa whoa! That’s a really strong accusation! I told you I left him there at lake lag, and I don’t know what happened to him after that if he was murdered then. How dare you accuse me! I think you should leave."
+                                            frat_bro "Whoa whoa whoa! How dare you accuse me! I think you should leave."
                                             jump middle
                                     "{i}Enthusiastically say yes.{/i}":
                                         mc "Hell yeah, brother!"
                                         show frat_bro weird
-                                        frat_bro "HELL YEAH BROTHER!! Alright man, listen…I can tell you’re a good guy. You’d make a good BROTHER. And I want to tell you the secret fraternity Latin phrase to seal the deal with your future acceptance into the fraternity."
+                                        frat_bro "HELL YEAH BROTHER!! Alright man, listen…You’d make a good BROTHER. And I want to tell you the Latin phrase to seal the deal with your acceptance into the fraternity."
                                         frat_bro "Here, it’s written on this piece of paper in this envelope. Take it with you, and open it once you are in private."
                                         show cl3: 
                                             zoom 1.5
@@ -189,7 +196,7 @@ label frat_bro_date:
                                     jump suspicion_frat
                 "{i}Express your disapproval of his nonchalant reaction.{/i}":
                     mc "Is that really your reaction to our friend’s death? That’s a little fucked up..."
-                    frat_bro "Well, after I found out that he wasn’t FTB — FOR THE BOYS — I didn’t really care for him after that. I was hanging out with him at lake lag when I found out he doesn’t vibe with the boys, so I left him there. But it won’t be like that with you, right?"
+                    frat_bro "Well, after I found out that he wasn’t FTB — FOR THE BOYS - so I left him there. But it won’t be like that with you, right?"
                     menu:
                         "{i}Express your suspicion towards him supposedly “leaving him there”.{/i}":
                             mc "You just left him there? I don’t believe that…"
@@ -213,32 +220,31 @@ label frat_bro_date:
                             mc "Lake lag? Are you aware about what happened with Jim there?"
                             show frat_bro sad
                             frat_bro "Um, if you’re referring to me taking him there, yeah. I was hanging out with him at lake lag one night."
-                            frat_bro "But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that. So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
+                            frat_bro "But I found out that he wasn’t FTB — FOR THE BOYS - so I left him there. I don’t know what happened after that."
                             jump talk_about
                         "{i}Enthusiastically express your desire to rush and join the frat.{/i}":
                             show frat_bro
                             mc "Yeah, I want to rush! I’d like to be a part of the frat too!"
-                            frat_bro "Hmm…I don’t know yet. We at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa are very selective in our process of choosing the new pledge class."
-                            frat_bro "I’ve got to get to know you better first, and I think you have to get to know me better too. Ask me some more questions."
+                            frat_bro "Hmm…I don’t know yet. We at Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa are very selective."
+                            frat_bro "I think you have to get to know me better. Ask me some more questions."
                             menu:
                                 "{i}Ask if he has been at Lake Lag recently, besides for pledge.{/i}":
                                     label besides_pledge:
                                         mc "Have you hung out at Lake Lag recently, besides for pledge?"
                                         frat_bro "Yeah actually, that’s a lit place for a date! I took a guy I was seeing, Jim, to that spot."
-                                        frat_bro "But I found out that he wasn’t FTB — FOR THE BOYS — that night, and I didn’t really care for him after that."
-                                        frat_bro "So I left him there when I found out he doesn’t vibe with the boys. I don’t know what happened after that."
+                                        frat_bro "But I found out that he wasn’t FTB — FOR THE BOYS — so I left him there. I don’t know what happened after that."
                                         menu:
                                             "{i}Ask about what they talked about.{/i}":
                                                 jump talk_about_subpart
                                             "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}":
                                                 show frat_bro sad
                                                 mc "Do you know who Jim is? Did you know he’s been murdered recently at Lake Lag?"
-                                                frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
+                                                frat_bro "Daaamn did he get transported? That would have been a sick story ah ha ha. You wanna watch anything?"
                                                 jump frat_guy_location
                                 "{i}Ask him if he knows Jim and that he’s been murdered recently.{/i}":
                                     show frat_bro sad
                                     mc "Do you know who Jim is? Did you know he’s been murdered recently at Lake Lag?"
-                                    frat_bro "Daaamn that’s insane. Did they get transported or something? That would have been a sick story to tell ah ha ha. Anyways, do you wanna watch anything?"
+                                    frat_bro "Daaamn did they get transported? That would have been a sick story ah ha ha. You wanna watch anything?"
                                     jump frat_guy_location
 
                 "{i}Enthusiastically ask when Brett and his frat are throwing down next.{/i}":
@@ -273,7 +279,7 @@ label frat_bro_date:
                 "{i}Ask him who he took to Lake Lag.{/i}":
                     mc "Who did you take there?"
                     frat_bro "I took this other person I was seeing at the time, Jim. He wanted to get lit with us so I took him there, and we had a good time."
-                    frat_bro "Didn’t hear from him after that though. But I mean, if you’re for the BROTHERHOOD, and are possibly thinking about joining the frat too, let me know and I can take you there too, or anywhere else."
+                    frat_bro "Didn’t hear from him after that though. But I mean, if you’re for the BROTHERHOOD let me know and I can take you there too, or anywhere else."
                     menu:
                         "{i}Ask about what they talked about.{/i}":
                             jump talk_about_subpart
@@ -349,17 +355,17 @@ label CS_guy_date:
     $ date_counter += 1
 
     # Display the date dialogue
-    mc "Hey Brian! It’s great to meet you, excited to hang out with you!"
+    mc "Hey Chris! It’s great to meet you, excited to hang out with you!"
     cs_guy "Me too! I saw that your Hinge profile mentions that you’re a CS major! Talking about machine learning models really gets me going."
 
     # Display the food choice
     menu:
-        "{i}Be upfront and interrogate Brian directly about Jim’s murder.{/i}":
+        "{i}Be upfront and interrogate Chris directly about Jim’s murder.{/i}":
             mc "Look I know that we’re supposed to be on a date right now but I was hoping we could talk a bit more about my roommate Jim, who I know you went out on a date with"
             show cs_guy sad
             cs_guy "Oh, I really liked Jim even though he wasn’t a CS major. Clearly, he wasn’t able to understand anything about my projects and any of my passions. Still, it was a shame to hear about the Lake Lag incident."
             menu: 
-                "{i}Ask Brian where he was that night, and if he has any alibis to back it up.{/i}":
+                "{i}Ask Chris where he was that night, and if he has any alibis to back it up.{/i}":
                     mc "Where were you that night? Do you have any alibis or any evidence to back that up?"
                     cs_guy "I actually don’t but I was hanging out with my friend Brett before he said he had to go to Lake Lag for some Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa rush event."
                     show cs_guy
@@ -373,7 +379,7 @@ label CS_guy_date:
                             cs_guy "Apparently the pledges were bringing potential dates to Lake Lag. That’s all I know. And Brett is a good friend of mine that I hang out with when I need to let loose after grinding on CS PSets and AlibiAI."
                             cs_guy "He gets it you know, what it’s like being a CS major, with the frat he’s in being the CS-bro frat. But things have been weird lately, ever since he also started seeing Jim at the same time as me."
                             menu frat_guy_converge: 
-                                "{i}Express your sympathy for things having gotten weird for Brian and his friend.{/i}":
+                                "{i}Express your sympathy for things having gotten weird for Chris and his friend.{/i}":
                                     mc "Aw, I’m sorry to hear that things have been weird with you and Brett."
                                     show cs_guy
                                     cs_guy "Oh, it’s no worries. Thanks for expressing your concern, but I’ve realized that romance and love only get in the way of my intellectual pursuits. Unless my partner were to also be as good at CS as I am."
@@ -391,7 +397,7 @@ label CS_guy_date:
                                 "{i} Ask for Brett’s phone number.{/i}":
                                     mc "Can I get Brett’s number?"
                                     show cs_guy angry
-                                    cs_guy "Really? After what I just said about things being weird because of a mutual love interest? No, I won’t give you his number. In fact, I’m gonna have to ask you to leave."
+                                    cs_guy "Really? After what I just said? No, I won’t give you his number. In fact, I’m gonna ask you to leave."
                                     mc "Sorry for the trouble!"
                                     jump middle
                                 "{i} Ask to hear more about AlibiAI. {/i}":
@@ -400,15 +406,13 @@ label CS_guy_date:
                             label ask_more_alibi_ai:
                                 mc "Can you tell me more about AlibiAI?"
                                 show cs_guy
-                                cs_guy "That’s a personal project that I’ve been working on ever since Andrew Ng told me that it would be a cool idea to look into."
-                                cs_guy "AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."
-                                cs_guy "I personally thought it was a bit weird when he first told me about the idea, but I talked to my friend Brett about it, and he really strongly encouraged me to pursue it and implement it."
-                                cs_guy "I even have funding for it in the works now — I pitched my idea to some hotshot ex-CEO named Britneigh, who is now handling all the business stuff. I don’t know too much about those details though."
+                                cs_guy "AlibiAI is an app that uses AI to help you create foolproof alibis using relevant details that you input."                                
+                                cs_guy "There's funding now — I pitched my idea to some hotshot ex-CEO named Ashleigh, who is now handling all the business stuff. I don’t know too much about those details though."
                                 "{i}You remember that Brett was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
                                 menu more_alibi_ai: 
                                     "{i} Compliment his AlibiAI project and his engineering skills for being able to build it.{/i}":
-                                        mc "That sounds like a really cool project! It sounds like a very technically challenging engineering problem, so it’s so cool to see that you’re smart enough to tackle it."
-                                        cs_guy "Oh, you’re too kind! But also you’re not wrong. Doesn’t AlibiAI sound like a pretty awesome project? It’s awesome to see that great can recognize great."
+                                        mc "That sounds like a really cool project! It sounds like a very technically challenging engineering problem, you must be hella smart."
+                                        cs_guy "Oh, you’re too kind! But also you’re not wrong. It’s awesome to see that great can recognize great."
                                         cs_guy "Here, I can give you the access key to the beta demo if you want to check it out?"
                                         show cl1:
                                             zoom 1.7
@@ -420,49 +424,46 @@ label CS_guy_date:
                                     "{i} Ask about why Brett might have encouraged him so much to build AlibiAI.{/i}":
                                         mc "Why did Brett encourage you so much to build AlibiAI?"
                                         show cs_guy angry
-                                        cs_guy "Honestly, I’m not really sure why. But it did seem like it might be because he really wanted to use it for himself." 
+                                        cs_guy "Honestly, I’m not really sure why. Seemed like he really wanted to use it for himself lol." 
                                         cs_guy "But that’s all I’ll say. Anyways, I gotta get going. Gotta keep working on my project. See you later! "
                                         jump middle
-                                    "{i} Ask to hear more about Britneigh and the business side of things.{/i}":
-                                        mc "Can you tell me any more about Britneigh and the business side of things?"
+                                    "{i} Ask to hear more about Ashleigh and the business side of things.{/i}":
+                                        mc "Can you tell me any more about Ashleigh and the business side of things?"
                                         show cs_guy angry
                                         cs_guy "Oh god, you care more about the business side of things than the sick tech??"
-                                        cs_guy "Ugh. To answer your question, there’s not much I can tell you because she hasn’t been communicating very well about it.  But you can go ask her yourself if you want."
+                                        cs_guy "Go ask her yourself if you want."
                                         cs_guy "Anyways, I think this date is over."
                                         jump middle
                 "{i}Ask about how the date with Jim went.{/i}":
                     mc "What did you guys talk about? How did your date go with Jim?"
                     show cs_guy angry
-                    cs_guy "I tried explaining my projects to Jim, like for example my project AlibiAI, but he really didn’t understand what I was talking about. That’s when I knew that things between us weren’t going to work out."
-                    cs_guy "Also, he was clearly more into my friend Brett and mentioned his name multiple times during our date. He even told me that they were supposed to meet up later somewhere." 
-                    cs_guy "Since then, things between Brett and I have been a little weird, but I guess that’s not that important."
+                    cs_guy "I tried explaining AlibiAI to Jim, but he really didn’t understand the backend. That’s when I knew it wouldn't work out."
+                    cs_guy "Also, he was clearly more into my friend Brett. He even told me that they were supposed to meet up later somewhere." 
                     jump frat_guy_converge
                 
         "{i}Ask him enthusiastically about his project, research, and work.{/i}":
             mc "Yes, I’d love to chat about your projects and what kind of research you’re doing! It’s so cool to connect with someone who is interested in the same things as me!"
             show cs_guy
             cs_guy "I’d love to tell you all about the amazing things that I’ve been working on! It’s really setting me up for success for my Stanford CS PhD applications."
-            cs_guy "I’m currently working in 2 labs, the main one being Andrew Ng’s lab which is super prestigious to get into."
-            cs_guy "I’m also working on a personal project called AlibiAI while being in 25 units this quarter — I’m taking CS 224n, CS 231n, CS 224w, CS 229, and CS 230. This quarter has been one of the lighter quarters this year though, which is nice."
+            cs_guy "I’m also working on a personal project called AlibiAI my project for CS 224n, CS 231n, CS 224w, CS 229, and CS 230."
 
             menu: 
                 "{i}Ask how he is able to juggle all of those commitments.{/i}":
                     mc "Dang, that’s so many classes! How do you juggle all of that?"
                     show cs_guy sad
-                    cs_guy "This? You think this is a lot? Oh boy, you should’ve seen me last quarter… I think I was in like 40 units! This is nothing compared to that."
-                    cs_guy "This quarter has been more about focusing on my personal projects, mainly AlibiAI, and hanging out with my friend Brett who is in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa, the CS-bro frat."
+                    cs_guy "Ehh this is nothing. This quarter has been about AlibiAI, and hanging out with Brett who is in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa"
                     cs_guy "He was actually the one who encouraged me to pursue implementing the tech for the personal project I mentioned."
                     "{i}You remember that Brett was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
                     menu frat_converge_2: 
                         "{i} Ask about why Brett might have encouraged him so much to build AlibiAI.{/i}":
                             mc "Why did Brett encourage you so much to build AlibiAI?"
                             show cs_guy shy
-                            cs_guy "Honestly, I’m not really sure why. But it did seem like it might be because he really wanted to use it for himself. But that’s all I’ll say. Anyways, I gotta get going. Gotta keep working on my project. See you later! "
+                            cs_guy "Not really sure why. Seemed like he wanted to use it lol. Anyways, I gotta go. "
                             jump middle
                         "{i} Ask for Brett’s phone number.{/i}":
                             mc "Can I get Brett’s number?"
                             show cs_guy angry
-                            cs_guy "Really? After what I just said about things being weird because of a mutual love interest? No, I won’t give you his number. In fact, I’m gonna have to ask you to leave."
+                            cs_guy "Really? After what I just said? No, I won’t give you his number. In fact, I’m gonna ask you to leave."
                             mc "Sorry for the trouble!"
                             jump middle
                         "{i} Ask to hear more about AlibiAI. {/i}":
@@ -471,8 +472,7 @@ label CS_guy_date:
                 "{i}Ask about what he does outside of work.{/i}":
                     mc "I’d love to hear more about what you do outside of work though!"
                     show cs_guy
-                    cs_guy "Hmm let’s see…outside of work, sometimes I really need to let loose and I go hang out at LAIR. I just love being around CS, you know?"
-                    cs_guy "But I guess other than that, and other than trying to find dates at Huang basement, I’ll hang out with my friend Brett who is in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa, the CS-bro frat."
+                    cs_guy "Other than trying to find dates at Huang basement, I’ll hang out with my friend Brett who is in Kappa Alpha Beta Delta Gamma Pi Sigma Mu Kappa"
                     cs_guy "He was actually the one who encouraged me to pursue implementing the tech for AlibiAI, the project I mentioned earlier, when I told him about it."
                     "{i}You remember that Brett was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
                     jump frat_converge_2
@@ -493,17 +493,16 @@ label start_up_date:
     mc "Hey there! So, you're all about startups and entrepreneurship, huh? Changing the world one app at a time?"
     startup_girl "Absolutely! I'm like the Elon Musk of dorm room innovations. The next big thing is just a pitch deck away!"
     menu: 
-        "{i}Be upfront and interrogate Britneigh directly about Jim’s murder.{/i}":
-            mc "Let’s get down to business. I know I called you here for a date, but I’m here to investigate the details of the murder of my roommate Jim, who I know you were seeing."
+        "{i}Be upfront and interrogate Ashleigh directly about Jim’s murder.{/i}":
             mc "Where were you on the night when Jim was murdered at Lake Lag?"
             label down_to_business:
                 show startup_girl sad
-                startup_girl " Ah, the night of that incident. I was sad to hear about that. Well, here's the deal, I was actually rocking the startup scene at an ultra-exclusive conference. Top secret stuff! "
+                startup_girl "Ah, that night I was actually rocking the startup scene at an ultra-exclusive conference. Top secret stuff! "
                 menu:
-                    "{i}Ask Britneigh if she has any proof that she was really at that conference.{/i}":
+                    "{i}Ask Ashleigh if she has any proof that she was really at that conference.{/i}":
                         mc "Is there any way you can prove you were there? Any witnesses or photos?"
                         show startup_girl
-                        startup_girl "Oh, I wish! Unfortunately, this event was like a covert mission—invite-only, no social media allowed. It was so secretive, they had a password just to use the bathroom."
+                        startup_girl "Ugh this event was like a covert mission—invite-only, no social media allowed. They had a password just to use the bathroom."
                         startup_girl "What I can share though is what my new startup is currently working on, which is really exciting!"
                         menu: 
                             "{i}Give in and let her share her startup idea to you.{/i}":
@@ -517,7 +516,7 @@ label start_up_date:
                         mc "What was the conference for?"
                         show startup_girl
                         startup_girl "Oh, I wish I could tell you! Unfortunately, this event was like a covert mission—invite-only, no social media allowed."
-                        startup_girl "It was so secretive, they had a password just to use the bathroom. What I can share though is what my new startup is currently working on, which is really exciting!"         
+                        startup_girl "It was so secretive, they had a password just to use the bathroom. What I can share though is my new startup which is really exciting!"         
                         menu: 
                             "{i}Give in and let her share her startup idea to you.{/i}":
                                 mc "Sigh…okay, what’s your startup idea?"
@@ -529,38 +528,33 @@ label start_up_date:
                     "{i}Ask about what startup she’s currently working on that she presented there.{i}":
                         mc "What kind of startup are you working on that you brought to the table there?"
                         jump next_big_thing
-        "{i}Ask Britneigh what she is currently working on.{/i}":
+        "{i}Ask Ashleigh what she is currently working on.{/i}":
             mc "So what’s your next big thing?"
             label next_big_thing:
                 show startup_girl flirty
                 startup_girl "'AlibiAI' – the ultimate solution for concealing unsavory activities. It's a revolutionary app that helps you create foolproof alibis, no questions asked."
-                startup_girl "AlibiAI is all about empowering individuals to control their narratives."
-                startup_girl "It's not just for criminals, but for anyone who wants to maintain privacy, protect their reputation, or maybe even hide a harmless secret or two."
-
                 menu :
                     "{i}Express that this project seems suspicious.{/i}":
                         mc "This sounds very suspicious…"
                         show startup_girl sad
-                        startup_girl "Yes I know about the recent murder…but this is completely unrelated to that, I swear. I’m only working on this because Brian suggested the idea to me and wanted my help on the business side of things."
-                        "{i}You remember that Brian was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
-                        menu more_brian: 
-                            "{i}Ask to hear more about Brian.{/i}":
-                                mc "Brian? Can you tell me more about him?"
+                        startup_girl "Yes I know about the recent murder… but this is completely unrelated. Chris suggested the idea to me and wanted my help on the business side of things."
+                        "{i}You remember that Chris was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                        menu more_Chris: 
+                            "{i}Ask to hear more about Chris.{/i}":
+                                mc "Chris? Can you tell me more about him?"
                                 startup_girl "I honestly don’t know much about him, and that’s mostly because I’ve been trying to keep him in the dark on a lot of the business side of things."
-                                startup_girl "I guess he is the one who pitched the idea to me, but I'm more of a visionary, ya know?"
-                                startup_girl "So things like who I’ve been getting funding from, Stanford BASES, I don’t really tell him about. But, I don’t really know anything about the guy. We barely talk."
+                                startup_girl "Things like who I’ve been getting funding from, Stanford BASES, I don’t really tell him about. "
                                 menu: 
-                                    "{i}Criticize her for taking credit for Brian’s idea.{/i}":
+                                    "{i}Criticize her for taking credit for Chris’s idea.{/i}":
                                         mc "You shouldn’t take credit for that…especially if it wasn’t your idea originally. That’s a little messed up."
                                         show startup_girl angry
                                         startup_girl "Hey, who are you to tell me what I should and shouldn’t do?"
-                                        startup_girl "I’m an entrepreneur of several startups alongside this one, and I’m very successful so I know what I’m doing. You know what, I should leave. I have to get going anyway."
+                                        startup_girl "I’m a SERIAL ENTREPRENEUR. You know what, I should leave. I have to get going anyway."
                                         jump middle
                                     "{i}Affirm her desire to take credit and give her positive validation.{/i}":
-                                        mc "I guess I get why you’d want to take the credit. It is a really cool idea, after all. It’s honestly so impressive how you’re spearheading the business side of things."
+                                        mc "I get why you’d want to take the credit. It’s honestly so impressive how you’re spearheading the business side of things."
                                         show startup_girl flirty
-                                        startup_girl "Thanks so much! It’s cool to see that it seems like an exciting project to you too!"
-                                        startup_girl "Here, I gotta get going, but let me give you my business card so we can chat more later. Would love to grab a meal sometime!"
+                                        startup_girl "I gotta go, but here's my business card. Let's grab a meal sometime!"
                                         show cl2:
                                             zoom 1.5
                                             xalign 0.5 yalign 0.4
@@ -568,22 +562,20 @@ label start_up_date:
                                         mc "Bye!"
                                         jump middle
 
-                            "{i}Ask her if she is aware that Brian was seeing Jim as well, and remind her that Jim was murdered.{/i}":
-                                mc "Brian? Are you aware that he was seeing Jim, the person who was murdered at Lake Lag recently?"
+                            "{i}Ask her if she is aware that Chris was seeing Jim as well, and remind her that Jim was murdered.{/i}":
+                                mc "Chris? Are you aware that he was seeing Jim, the person who was murdered at Lake Lag recently?"
                                 show startup_girl sad
-                                startup_girl "Whoa, I had no idea! I didn’t know Jim was seeing other people. But I swear, I didn’t know that about Brian — "
-                                startup_girl "I’ve honestly been trying to keep him in the dark on a lot of the business side of things, and as a result, we don’t really communicate that much."
-                                startup_girl "He is the one who pitched the idea to me, but I kinda want the credit for myself, ya know? So things like who I’ve been getting funding from, Stanford BASES, I don’t really tell him about. We barely talk."
+                                startup_girl "Whoa, I had no idea! I didn’t know Jim was seeing other people. But I swear, I didn’t know that about Chris — "
+                                startup_girl "He is the one who pitched the idea to me, but I kinda want the credits, ya know? He doesn't even know that BASES is funding me."
                                 menu:
-                                    "{i}Criticize her for taking credit for Brian’s idea.{/i}":
+                                    "{i}Criticize her for taking credit for Chris’s idea.{/i}":
                                         mc "You shouldn’t take credit for that…especially if it wasn’t your idea originally. That’s a little messed up."
                                         show startup_girl angry
-                                        startup_girl "Hey, who are you to tell me what I should and shouldn’t do? I’m an entrepreneur of several startups alongside this one, and I’m very successful so I know what I’m doing."
-                                        startup_girl "You know what, I should leave. I have to get going anyway."
+                                        startup_girl "I’m a SERIAL ENTREPRENEUR. I know what I’m doing. You know what, I should leave. I have to get going anyway."
                                         jump middle
                                     "{i}Affirm her desire to take credit and give her positive validation.{/i}":
-                                        mc "I guess I get why you’d want to take the credit. It is a really cool idea, after all. It’s honestly so impressive how you’re spearheading the business side of things."
-                                        startup_girl "Thanks so much! It’s cool to see that it seems like an exciting project to you too! Here, I gotta get going, but let me give you my business card so we can chat more later. Would love to grab a meal sometime!"
+                                        mc "I guess I get why you’d want to take the credit. It’s honestly so impressive how you’re spearheading the business side of things."
+                                        startup_girl "Thanks so much! Glad you're excited! I gotta go, but here's my card. Would love to grab a meal sometime!"
                                         show cl2:
                                             zoom 1.5
                                             xalign 0.5 yalign 0.4
@@ -593,27 +585,26 @@ label start_up_date:
                     "{i}Ask her how this idea would work.{/i}":
                         mc "How would this even work?"
                         show startup_girl
-                        startup_girl "Simple. Users would input relevant details about their desired alibi—time, location, circumstances—and AlibiAI's advanced algorithms would generate a meticulously crafted narrative, backed by seemingly authentic evidence."
-                        startup_girl "We'd offer different package tiers, from basic cover-ups to deluxe setups that include tailored social media posts and forged documents. Unsure how the technology works - "
-                        startup_girl "I’m on the business side of things, but you can email my colleague Brian who came to me with the idea and wanted my help on the business side of things while he codes it."
-                        "{i}You remember that Brian was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
-                        jump more_brian
+                        startup_girl "Simple. Users input their alibi—time, location, circumstances. AlibiAI creates a narrative, backed by authentic-ish evidence."
+                        startup_girl "I’m on the business side of things, but you can email Chris wanted my help while he codes it."
+                        "{i}You remember that Chris was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                        jump more_Chris
                     "{i}Ask her if this is her own original idea.{/i}":
                         mc"Is this your own original idea?"
-                        startup_girl "I mean…depends on how you define “original”. It is my idea now too, since I’m working on the business side as the COO, but I will admit that Brian did suggest the idea to me originally because he wanted my help."
-                        "{i}You remember that Brian was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
-                        jump more_brian
+                        startup_girl "I mean…depends on how you define “original”. It is my idea now too, since I’m working on the business side as the COO."
+                        "{i}You remember that Chris was also one of Jim's romantic interests that you thought of as a possible suspect.{/i}"
+                        jump more_Chris
         "{i}Butter her up and ask her if she wants to go rock climbing with you.{/i}":
             mc "Wow, you look like you’d be really good at rock climbing. Want to go with me some time?"
             show startup_girl flirty
             startup_girl "Rock climbing! You know, I have a bit of a reputation in climbing circles. They call me the Spider."
-            startup_girl "As much as I would love to though, I unfortunately won’t be able to. I’ve had my hands really full recently, so I really don’t have much free time these days. You know, other than for quick casual dates like this."
+            startup_girl "But I can't. I’m packed, so I only have time for quick casual dates like this."
             menu:
                 "{i}Ask her about why she’s so busy.{/i}":
                     mc "What’s got you so busy?"
                     jump next_big_thing
                 "{i}Flip on her and start grilling her about the murder of Jim.{/i}":
-                    mc "I was making fun of you. I don’t even like rock climbing. What I really want to know is that you were doing on the night that my roommate Jim was murdered!"
+                    mc "I was making fun of you. I don’t even like rock climbing. WWhere were you on the night that my roommate Jim was murdered!"
                     jump down_to_business
         
 
@@ -636,22 +627,19 @@ label police_segment:
     police_officer "This is Stanford Police open up."
     mc "Woah, hi there. How can I help you?"
     police_officer "We’re just here to ask a few questions regarding the recent death of your roommate."
-    police_officer "While we have no particular suspects, we need to start by asking if you knew anything that could help with the investigation of the murder."
-    police_officer "Is there anyone that you are aware of that your roommate interacted with prior to their death?"
     menu:
         mc "Yes! I know who did it! It was"
         "{i}Report Brett{/i}":
             mc "It was Brett!"
             police_officer  "Hm… interesting… Alright, we're going to bring him in immediately for questioning."
             mc "Don't you need a warrant? Or evidence?"
-            police_officer  "Nah f*** these kids!"
+            police_officer  "Nah fuck these kids!"
             scene bg black:
                 zoom 10
             show frat_bro:
-                zoom 1.5
+                zoom 1
                 truecenter
-            police_officer "THIS IS STANFORD POLICE! OPEN UP!"
-            police_officer "WE'RE BRINGING YOU INTO CUSTODY FOR JIM'S MUDER"
+            police_officer "STANFORD POLICE! WE'RE BRINGING YOU INTO CUSTODY FOR JIM'S MUDER"
             show frat_bro angry
             frat_bro "Woah woah woah! Chill man! I didn’t do anything alright. What are you guys even talking about?!"
             police_officer "We know you’re lying! Get on the floor and put your hands behind your back!"
@@ -660,46 +648,40 @@ label police_segment:
             police_officer "Where you’re going no one will be FTB and you’ll be kept away from the boys for a long long time!"
             frat_bro "NO! NOT MY BOYS! I NEED MY BOYS! NOOOOOOO!!!!!!"
             jump wrong_murderer
-        "{i}Report Brian{/i}":
-            mc "It was Brian!"
+        "{i}Report Chris{/i}":
+            mc "It was Chris!"
             police_officer "Hm… interesting… Alright, we're going to bring him in immediately for questioning."
             mc "Don't you need a warrant? Or evidence?"
-            police_officer  "Nah f*** these kids!"
+            police_officer  "Nah fuck these kids!"
             scene bg black:
                 zoom 10
             show cs_guy:
-                zoom 1.5
+                zoom 1
                 truecenter
-            police_officer "THIS IS STANFORD POLICE! OPEN UP!"
-            police_officer "WE'RE BRINGING YOU INTO CUSTODY FOR JIM'S MUDER"
+            police_officer "STANFORD POLICE! WE'RE BRINGING YOU INTO CUSTODY FOR JIM'S MUDER"
             show cs_guy angry
-            cs_guy "What?! I don’t even know who that is?! What are you talking about?"
-            police_officer "Of course you know! You murdered him!"
-            cs_guy "How do I have time to think about murdering someone, much less having the time to actually do it, when I’m literally grinding 229, 140, and 110 at the same time?"
+            cs_guy "How do I have time to think about murdering someone when I’m literally grinding 229, 140, and 110 at the same time?"
             police_officer "We don’t care what those numbers mean nor do we like to think about numbers! Get on the ground!"
             show cs_guy sad
-            cs_guy "I swear you have the wrong person! No! I was just about to push my latest commit too and then submit the psets!!!! Just let me submit them first!!!!!!!!"
+            cs_guy "No! I was just about to push my latest commit too and then submit the psets!!!! Just let me submit them first!!!!!!!!"
             jump wrong_murderer
-        "{i}Report Britneigh{/i}":
-            mc "It was Britneigh!"
+        "{i}Report Ashleigh{/i}":
+            mc "It was Ashleigh!"
             police_officer  "Hm… interesting… Alright, we're going to bring her in immediately for questioning."
             mc "Don't you need a warrant? Or evidence?"
-            police_officer  "Nah f*** these kids!"
+            police_officer  "Nah fuck these kids!"
             scene bg black:
                 zoom 10
             show startup_girl:
-                zoom 1.5
+                zoom 1
                 truecenter
-            police_officer "THIS IS STANFORD POLICE! OPEN UP!"
-            police_officer "WE'RE BRINGING YOU INTO CUSTODY FOR JIM'S MUDER"
+            police_officer "STANFORD POLICE! WE'RE BRINGING YOU INTO CUSTODY FOR JIM'S MUDER"
             show startup_girl angry
-            startup_girl "What?! I don’t even know who that is?! What are you talking about?"
-            police_officer "Of course you know! You murdered him!"
             startup_girl "I’ve literally been meeting with 20 VCs a day!? How could I possibly enough care enough about anyone to not flake with them, much less carry out a murder?"
             police_officer "That’s exactly the type of cold heartless personality that would kill someone and hide it perfectly! Get on the ground!"
             show startup_girl sad
             startup_girl "I swear you have the wrong person!"
-            startup_girl "No! I was literally just about to grab coffee with Pearquoia Ventures and raise for my pre-pre Series F funding round! Please let me just circle back with them really quickly!"
+            startup_girl "No! I was literally just about to grab coffee with Pearquoia Ventures and raise for my pre-pre Series F funding round! Let me just circle back with them really quickly!"
             jump correct_killer_identified
 
 
